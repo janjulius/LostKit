@@ -30,6 +30,7 @@ namespace LostKit
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
@@ -66,7 +67,7 @@ namespace LostKit
             tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(233, 549);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "tabPage1";
+            tabPage1.Text = "Worlds";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
@@ -74,9 +75,9 @@ namespace LostKit
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(258, 549);
+            tabPage2.Size = new Size(233, 549);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
+            tabPage2.Text = "Highscores";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // Form1
@@ -86,8 +87,9 @@ namespace LostKit
             ClientSize = new Size(1067, 602);
             Controls.Add(tabControl1);
             Controls.Add(webView21);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
-            Text = "Form1";
+            Text = "LostKit";
             ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
             tabControl1.ResumeLayout(false);
             ResumeLayout(false);
