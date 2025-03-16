@@ -1,5 +1,8 @@
 using HtmlAgilityPack;
+using LostKit.Helpers;
+using LostKit.Models;
 using Microsoft.Web.WebView2.WinForms;
+using Newtonsoft.Json;
 using System.Net.Http;
 
 namespace LostKit
@@ -7,7 +10,6 @@ namespace LostKit
     public partial class Form1 : Form
     {
         public WebView2 webView;
-
 
         private List<WorldData> worldList = new List<WorldData>();
         private readonly HttpClient httpClient = new HttpClient();
@@ -35,7 +37,7 @@ namespace LostKit
             webView.EnsureCoreWebView2Async();
 
             webView.NavigationCompleted += (s, e) => RemoveGameFrameTop();
-
+            SearchPlayerByName("dog");
         }
 
         private async void RemoveGameFrameTop()
@@ -48,6 +50,37 @@ namespace LostKit
                 await webView.CoreWebView2.ExecuteScriptAsync(
                     "document.getElementById('gameframe-top')?.remove();"
                 );
+            }
+        }
+
+        private async Task<List<SkillRecord>> SearchPlayerByName(string playerName)
+        {
+            string url = $"https://2004.lostcity.rs/api/hiscores/player/{playerName}";
+
+            // Create an HttpClient instance
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    // Send GET request to the API
+                    string jsonResponse = await client.GetStringAsync(url);
+
+                    // Deserialize the JSON response into a list of SkillRecord objects
+                    List<SkillRecord> skillRecords = JsonConvert.DeserializeObject<List<SkillRecord>>(jsonResponse);
+
+                    // Print out the results
+                    //foreach (var record in skillRecords)
+                    //{
+                    //    //MessageBox.Show($"{record.Type} - Level: {record.Level}, Value: {record.Value / 10}, Date: {record.Date}, Rank: {record.Rank}");
+                    //}
+
+                    return skillRecords;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred: {ex.Message}");
+                    return null;
+                }
             }
         }
 
@@ -190,11 +223,69 @@ namespace LostKit
 
         private void OnWorldDoubleClick(WorldData world)
         {
-            MessageBox.Show($"Loading world {world.WorldName}.");
             webView.Source = new Uri($"https://2004.lostcity.rs/client?world={world.WorldId}&detail={Settings.FavDetailSettings.ToString().ToLower()}&method=0");
             webView.EnsureCoreWebView2Async();
         }
 
+        private void LoadHighscoreTab()
+        {
 
+        }
+
+        private async void HigscoreSearch_onclick(object sender, MouseEventArgs e)
+        {
+            var skillRecords = await SearchPlayerByName(HiscoreSearchBox.Text.Trim().ToLower().Replace(' ', '_'));
+
+            if (skillRecords != null)
+            {
+                foreach (var skillRecord in skillRecords)
+                {
+                    LoadHiscoreSkill(skillRecord);
+                }
+
+                SetCombatLevelHiScore(GetCombatLevel(skillRecords[(int)SkillType.Attack].Level,
+                    skillRecords[(int)SkillType.Strength].Level,
+                    skillRecords[(int)SkillType.Hitpoints].Level,
+                    skillRecords[(int)SkillType.Defence].Level,
+                    skillRecords[(int)SkillType.Ranged].Level,
+                    skillRecords[(int)SkillType.Magic].Level,
+                    skillRecords[(int)SkillType.Prayer].Level));
+            }
+
+        }
+
+        private void LoadHiscoreSkill(SkillRecord record)
+        {
+            switch (record.Type)
+            {
+                case SkillType.Overall:
+                    HiScoreOverall.Text = record.Level.ToString();
+                    toolTip1.SetToolTip(HiScoreOverall, $"Total exp: {NumberHelper.MakeBigNumberReadable(record.Value)}" +
+                        $"\nRank: {NumberHelper.MakeBigNumberReadable(record.Rank)}");
+                    break;
+            }
+        }
+
+        private void SetCombatLevelHiScore(double lvl)
+        {
+            HiScoreCombat.Text = lvl.ToString();
+        }
+
+
+        private double GetCombatLevel(int attack, int strength, int hitpoints, int defense, int ranged, int magic, int prayer)
+        {
+                int base_lvl = Convert.ToInt32(prayer / 2 - 0.5 + hitpoints + defense) / 4;
+                int melee = Convert.ToInt32((attack + strength) * 0.325);
+                int range = Convert.ToInt32((ranged * 1.5 - 0.5) * 0.325);
+                int mage = Convert.ToInt32((magic * 1.5 - 0.5) * 0.325);
+
+                if (range > melee || mage > melee)
+                {
+                    return range >= mage ? base_lvl + range : base_lvl + mage;
+                }
+
+                return base_lvl + melee;
+            
+        }
     }
 }
