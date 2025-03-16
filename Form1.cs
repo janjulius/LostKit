@@ -263,7 +263,18 @@ namespace LostKit
                     toolTip1.SetToolTip(HiScoreOverall, $"Total exp: {NumberHelper.MakeBigNumberReadable(record.Value)}" +
                         $"\nRank: {NumberHelper.MakeBigNumberReadable(record.Rank)}");
                     break;
+                case SkillType.Attack:
+                    LoadHiscoreSkill(record, ref HiscoreAttack);
+                    break;
             }
+        }
+
+        private void LoadHiscoreSkill(SkillRecord record, ref Label label)
+        {
+            label.Text = record.Level.ToString();
+            toolTip1.SetToolTip(label, $"Total exp: {NumberHelper.MakeBigNumberReadable(record.Value)}" +
+                $"\nRank: {NumberHelper.MakeBigNumberReadable(record.Rank)}");
+            //add next lv etc
         }
 
         private void SetCombatLevelHiScore(double lvl)
