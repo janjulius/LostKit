@@ -17,7 +17,9 @@ namespace LostKit
         {
             webView = new WebView2
             {
-                Dock = DockStyle.Fill,
+                //Dock = DockStyle.Fill,
+                Location = new Point(10, 10),
+                Size = new Size(800, 600)
             };
             this.Controls.Add(webView);
 
