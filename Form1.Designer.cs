@@ -39,9 +39,9 @@ namespace LostKit
             webView21.AllowExternalDrop = true;
             webView21.CreationProperties = null;
             webView21.DefaultBackgroundColor = Color.White;
-            webView21.Location = new Point(137, 71);
+            webView21.Location = new Point(12, 7);
             webView21.Name = "webView21";
-            webView21.Size = new Size(75, 23);
+            webView21.Size = new Size(845, 605);
             webView21.TabIndex = 0;
             webView21.ZoomFactor = 1D;
             // 
@@ -49,7 +49,7 @@ namespace LostKit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(864, 622);
             Controls.Add(webView21);
             Name = "Form1";
             Text = "Form1";
