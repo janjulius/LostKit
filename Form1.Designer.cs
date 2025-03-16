@@ -130,7 +130,7 @@ namespace LostKit
             // 
             // tabPage1
             // 
-            tabPage1.BackColor = Color.Gray;
+            tabPage1.BackColor = Color.DimGray;
             tabPage1.Controls.Add(HiscoresRunecraft);
             tabPage1.Controls.Add(pictureBox21);
             tabPage1.Controls.Add(HiscoresWoodcutting);
@@ -194,7 +194,7 @@ namespace LostKit
             // pictureBox21
             // 
             pictureBox21.BackgroundImage = (Image)resources.GetObject("pictureBox21.BackgroundImage");
-            pictureBox21.BackgroundImageLayout = ImageLayout.None;
+            pictureBox21.BackgroundImageLayout = ImageLayout.Center;
             pictureBox21.InitialImage = (Image)resources.GetObject("pictureBox21.InitialImage");
             pictureBox21.Location = new Point(21, 384);
             pictureBox21.Name = "pictureBox21";
@@ -214,7 +214,7 @@ namespace LostKit
             // pictureBox20
             // 
             pictureBox20.BackgroundImage = (Image)resources.GetObject("pictureBox20.BackgroundImage");
-            pictureBox20.BackgroundImageLayout = ImageLayout.None;
+            pictureBox20.BackgroundImageLayout = ImageLayout.Center;
             pictureBox20.InitialImage = (Image)resources.GetObject("pictureBox20.InitialImage");
             pictureBox20.Location = new Point(150, 342);
             pictureBox20.Name = "pictureBox20";
@@ -234,7 +234,7 @@ namespace LostKit
             // pictureBox19
             // 
             pictureBox19.BackgroundImage = (Image)resources.GetObject("pictureBox19.BackgroundImage");
-            pictureBox19.BackgroundImageLayout = ImageLayout.None;
+            pictureBox19.BackgroundImageLayout = ImageLayout.Center;
             pictureBox19.InitialImage = (Image)resources.GetObject("pictureBox19.InitialImage");
             pictureBox19.Location = new Point(89, 342);
             pictureBox19.Name = "pictureBox19";
@@ -254,7 +254,7 @@ namespace LostKit
             // pictureBox18
             // 
             pictureBox18.BackgroundImage = (Image)resources.GetObject("pictureBox18.BackgroundImage");
-            pictureBox18.BackgroundImageLayout = ImageLayout.None;
+            pictureBox18.BackgroundImageLayout = ImageLayout.Center;
             pictureBox18.InitialImage = (Image)resources.GetObject("pictureBox18.InitialImage");
             pictureBox18.Location = new Point(21, 342);
             pictureBox18.Name = "pictureBox18";
@@ -274,7 +274,7 @@ namespace LostKit
             // pictureBox17
             // 
             pictureBox17.BackgroundImage = (Image)resources.GetObject("pictureBox17.BackgroundImage");
-            pictureBox17.BackgroundImageLayout = ImageLayout.None;
+            pictureBox17.BackgroundImageLayout = ImageLayout.Center;
             pictureBox17.InitialImage = (Image)resources.GetObject("pictureBox17.InitialImage");
             pictureBox17.Location = new Point(150, 300);
             pictureBox17.Name = "pictureBox17";
@@ -294,7 +294,7 @@ namespace LostKit
             // pictureBox16
             // 
             pictureBox16.BackgroundImage = (Image)resources.GetObject("pictureBox16.BackgroundImage");
-            pictureBox16.BackgroundImageLayout = ImageLayout.None;
+            pictureBox16.BackgroundImageLayout = ImageLayout.Center;
             pictureBox16.InitialImage = (Image)resources.GetObject("pictureBox16.InitialImage");
             pictureBox16.Location = new Point(89, 300);
             pictureBox16.Name = "pictureBox16";
@@ -314,7 +314,7 @@ namespace LostKit
             // pictureBox15
             // 
             pictureBox15.BackgroundImage = (Image)resources.GetObject("pictureBox15.BackgroundImage");
-            pictureBox15.BackgroundImageLayout = ImageLayout.None;
+            pictureBox15.BackgroundImageLayout = ImageLayout.Center;
             pictureBox15.InitialImage = (Image)resources.GetObject("pictureBox15.InitialImage");
             pictureBox15.Location = new Point(21, 300);
             pictureBox15.Name = "pictureBox15";
@@ -334,7 +334,7 @@ namespace LostKit
             // pictureBox14
             // 
             pictureBox14.BackgroundImage = (Image)resources.GetObject("pictureBox14.BackgroundImage");
-            pictureBox14.BackgroundImageLayout = ImageLayout.None;
+            pictureBox14.BackgroundImageLayout = ImageLayout.Center;
             pictureBox14.InitialImage = (Image)resources.GetObject("pictureBox14.InitialImage");
             pictureBox14.Location = new Point(150, 258);
             pictureBox14.Name = "pictureBox14";
@@ -354,7 +354,7 @@ namespace LostKit
             // pictureBox13
             // 
             pictureBox13.BackgroundImage = (Image)resources.GetObject("pictureBox13.BackgroundImage");
-            pictureBox13.BackgroundImageLayout = ImageLayout.None;
+            pictureBox13.BackgroundImageLayout = ImageLayout.Center;
             pictureBox13.InitialImage = (Image)resources.GetObject("pictureBox13.InitialImage");
             pictureBox13.Location = new Point(89, 258);
             pictureBox13.Name = "pictureBox13";
@@ -374,7 +374,7 @@ namespace LostKit
             // pictureBox12
             // 
             pictureBox12.BackgroundImage = (Image)resources.GetObject("pictureBox12.BackgroundImage");
-            pictureBox12.BackgroundImageLayout = ImageLayout.None;
+            pictureBox12.BackgroundImageLayout = ImageLayout.Center;
             pictureBox12.InitialImage = (Image)resources.GetObject("pictureBox12.InitialImage");
             pictureBox12.Location = new Point(21, 258);
             pictureBox12.Name = "pictureBox12";
@@ -394,7 +394,7 @@ namespace LostKit
             // pictureBox11
             // 
             pictureBox11.BackgroundImage = (Image)resources.GetObject("pictureBox11.BackgroundImage");
-            pictureBox11.BackgroundImageLayout = ImageLayout.None;
+            pictureBox11.BackgroundImageLayout = ImageLayout.Center;
             pictureBox11.InitialImage = (Image)resources.GetObject("pictureBox11.InitialImage");
             pictureBox11.Location = new Point(150, 216);
             pictureBox11.Name = "pictureBox11";
@@ -414,7 +414,7 @@ namespace LostKit
             // pictureBox10
             // 
             pictureBox10.BackgroundImage = (Image)resources.GetObject("pictureBox10.BackgroundImage");
-            pictureBox10.BackgroundImageLayout = ImageLayout.None;
+            pictureBox10.BackgroundImageLayout = ImageLayout.Center;
             pictureBox10.InitialImage = (Image)resources.GetObject("pictureBox10.InitialImage");
             pictureBox10.Location = new Point(89, 216);
             pictureBox10.Name = "pictureBox10";
@@ -434,7 +434,7 @@ namespace LostKit
             // pictureBox9
             // 
             pictureBox9.BackgroundImage = (Image)resources.GetObject("pictureBox9.BackgroundImage");
-            pictureBox9.BackgroundImageLayout = ImageLayout.None;
+            pictureBox9.BackgroundImageLayout = ImageLayout.Center;
             pictureBox9.InitialImage = (Image)resources.GetObject("pictureBox9.InitialImage");
             pictureBox9.Location = new Point(21, 216);
             pictureBox9.Name = "pictureBox9";
@@ -454,7 +454,7 @@ namespace LostKit
             // pictureBox8
             // 
             pictureBox8.BackgroundImage = (Image)resources.GetObject("pictureBox8.BackgroundImage");
-            pictureBox8.BackgroundImageLayout = ImageLayout.None;
+            pictureBox8.BackgroundImageLayout = ImageLayout.Center;
             pictureBox8.InitialImage = (Image)resources.GetObject("pictureBox8.InitialImage");
             pictureBox8.Location = new Point(150, 174);
             pictureBox8.Name = "pictureBox8";
@@ -474,7 +474,7 @@ namespace LostKit
             // pictureBox7
             // 
             pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
-            pictureBox7.BackgroundImageLayout = ImageLayout.None;
+            pictureBox7.BackgroundImageLayout = ImageLayout.Center;
             pictureBox7.InitialImage = (Image)resources.GetObject("pictureBox7.InitialImage");
             pictureBox7.Location = new Point(89, 174);
             pictureBox7.Name = "pictureBox7";
@@ -514,7 +514,7 @@ namespace LostKit
             // pictureBox5
             // 
             pictureBox5.BackgroundImage = (Image)resources.GetObject("pictureBox5.BackgroundImage");
-            pictureBox5.BackgroundImageLayout = ImageLayout.None;
+            pictureBox5.BackgroundImageLayout = ImageLayout.Center;
             pictureBox5.InitialImage = (Image)resources.GetObject("pictureBox5.InitialImage");
             pictureBox5.Location = new Point(150, 132);
             pictureBox5.Name = "pictureBox5";
@@ -534,7 +534,7 @@ namespace LostKit
             // pictureBox4
             // 
             pictureBox4.BackgroundImage = (Image)resources.GetObject("pictureBox4.BackgroundImage");
-            pictureBox4.BackgroundImageLayout = ImageLayout.None;
+            pictureBox4.BackgroundImageLayout = ImageLayout.Center;
             pictureBox4.InitialImage = (Image)resources.GetObject("pictureBox4.InitialImage");
             pictureBox4.Location = new Point(89, 132);
             pictureBox4.Name = "pictureBox4";
@@ -636,6 +636,7 @@ namespace LostKit
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.Disable;
+            BackColor = SystemColors.ControlDarkDark;
             ClientSize = new Size(1067, 602);
             Controls.Add(tabControl1);
             Controls.Add(webView21);
