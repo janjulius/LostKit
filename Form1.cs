@@ -120,7 +120,7 @@ namespace LostKit
                     }
 
                     // Populate UI elements
-                    PopulateTabPage();
+                    PopulateWorldTabPage();
                 }
             }
             catch (Exception ex)
@@ -129,8 +129,7 @@ namespace LostKit
             }
         }
 
-
-        private void PopulateTabPage()
+        private void PopulateWorldTabPage()
         {
             // Create a new TabPage
             TabPage tabPage = new TabPage("Worlds");
@@ -194,7 +193,8 @@ namespace LostKit
             MessageBox.Show($"Loading world {world.WorldName}.");
             webView.Source = new Uri($"https://2004.lostcity.rs/client?world={world.WorldId}&detail={Settings.FavDetailSettings.ToString().ToLower()}&method=0");
             webView.EnsureCoreWebView2Async();
-
         }
+
+
     }
 }

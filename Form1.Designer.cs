@@ -67,7 +67,7 @@ namespace LostKit
             tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(233, 549);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "Worlds";
+            tabPage1.Text = "Highscores";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
@@ -77,7 +77,7 @@ namespace LostKit
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(233, 549);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "Highscores";
+            tabPage2.Text = "Notes";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // Form1
