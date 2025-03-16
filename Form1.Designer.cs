@@ -205,7 +205,7 @@ namespace LostKit
             // HiscoresWoodcutting
             // 
             HiscoresWoodcutting.AutoSize = true;
-            HiscoresWoodcutting.Location = new Point(180, 352);
+            HiscoresWoodcutting.Location = new Point(191, 352);
             HiscoresWoodcutting.Name = "HiscoresWoodcutting";
             HiscoresWoodcutting.Size = new Size(12, 15);
             HiscoresWoodcutting.TabIndex = 41;
@@ -216,7 +216,7 @@ namespace LostKit
             pictureBox20.BackgroundImage = (Image)resources.GetObject("pictureBox20.BackgroundImage");
             pictureBox20.BackgroundImageLayout = ImageLayout.None;
             pictureBox20.InitialImage = (Image)resources.GetObject("pictureBox20.InitialImage");
-            pictureBox20.Location = new Point(139, 342);
+            pictureBox20.Location = new Point(150, 342);
             pictureBox20.Name = "pictureBox20";
             pictureBox20.Size = new Size(35, 36);
             pictureBox20.TabIndex = 40;
@@ -225,7 +225,7 @@ namespace LostKit
             // HiscoresFletching
             // 
             HiscoresFletching.AutoSize = true;
-            HiscoresFletching.Location = new Point(121, 352);
+            HiscoresFletching.Location = new Point(130, 352);
             HiscoresFletching.Name = "HiscoresFletching";
             HiscoresFletching.Size = new Size(12, 15);
             HiscoresFletching.TabIndex = 39;
@@ -236,7 +236,7 @@ namespace LostKit
             pictureBox19.BackgroundImage = (Image)resources.GetObject("pictureBox19.BackgroundImage");
             pictureBox19.BackgroundImageLayout = ImageLayout.None;
             pictureBox19.InitialImage = (Image)resources.GetObject("pictureBox19.InitialImage");
-            pictureBox19.Location = new Point(80, 342);
+            pictureBox19.Location = new Point(89, 342);
             pictureBox19.Name = "pictureBox19";
             pictureBox19.Size = new Size(35, 36);
             pictureBox19.TabIndex = 38;
@@ -265,7 +265,7 @@ namespace LostKit
             // HiscoresFiremaking
             // 
             HiscoresFiremaking.AutoSize = true;
-            HiscoresFiremaking.Location = new Point(180, 310);
+            HiscoresFiremaking.Location = new Point(191, 310);
             HiscoresFiremaking.Name = "HiscoresFiremaking";
             HiscoresFiremaking.Size = new Size(12, 15);
             HiscoresFiremaking.TabIndex = 35;
@@ -276,7 +276,7 @@ namespace LostKit
             pictureBox17.BackgroundImage = (Image)resources.GetObject("pictureBox17.BackgroundImage");
             pictureBox17.BackgroundImageLayout = ImageLayout.None;
             pictureBox17.InitialImage = (Image)resources.GetObject("pictureBox17.InitialImage");
-            pictureBox17.Location = new Point(139, 300);
+            pictureBox17.Location = new Point(150, 300);
             pictureBox17.Name = "pictureBox17";
             pictureBox17.Size = new Size(35, 36);
             pictureBox17.TabIndex = 34;
@@ -285,7 +285,7 @@ namespace LostKit
             // HiscoresCrafting
             // 
             HiscoresCrafting.AutoSize = true;
-            HiscoresCrafting.Location = new Point(121, 310);
+            HiscoresCrafting.Location = new Point(130, 310);
             HiscoresCrafting.Name = "HiscoresCrafting";
             HiscoresCrafting.Size = new Size(12, 15);
             HiscoresCrafting.TabIndex = 33;
@@ -296,7 +296,7 @@ namespace LostKit
             pictureBox16.BackgroundImage = (Image)resources.GetObject("pictureBox16.BackgroundImage");
             pictureBox16.BackgroundImageLayout = ImageLayout.None;
             pictureBox16.InitialImage = (Image)resources.GetObject("pictureBox16.InitialImage");
-            pictureBox16.Location = new Point(80, 300);
+            pictureBox16.Location = new Point(89, 300);
             pictureBox16.Name = "pictureBox16";
             pictureBox16.Size = new Size(35, 36);
             pictureBox16.TabIndex = 32;
@@ -325,7 +325,7 @@ namespace LostKit
             // HiscoresCooking
             // 
             HiscoresCooking.AutoSize = true;
-            HiscoresCooking.Location = new Point(180, 268);
+            HiscoresCooking.Location = new Point(191, 268);
             HiscoresCooking.Name = "HiscoresCooking";
             HiscoresCooking.Size = new Size(12, 15);
             HiscoresCooking.TabIndex = 29;
@@ -336,7 +336,7 @@ namespace LostKit
             pictureBox14.BackgroundImage = (Image)resources.GetObject("pictureBox14.BackgroundImage");
             pictureBox14.BackgroundImageLayout = ImageLayout.None;
             pictureBox14.InitialImage = (Image)resources.GetObject("pictureBox14.InitialImage");
-            pictureBox14.Location = new Point(139, 258);
+            pictureBox14.Location = new Point(150, 258);
             pictureBox14.Name = "pictureBox14";
             pictureBox14.Size = new Size(35, 36);
             pictureBox14.TabIndex = 28;
@@ -345,7 +345,7 @@ namespace LostKit
             // HiscoresThieving
             // 
             HiscoresThieving.AutoSize = true;
-            HiscoresThieving.Location = new Point(121, 268);
+            HiscoresThieving.Location = new Point(130, 268);
             HiscoresThieving.Name = "HiscoresThieving";
             HiscoresThieving.Size = new Size(12, 15);
             HiscoresThieving.TabIndex = 27;
@@ -356,7 +356,7 @@ namespace LostKit
             pictureBox13.BackgroundImage = (Image)resources.GetObject("pictureBox13.BackgroundImage");
             pictureBox13.BackgroundImageLayout = ImageLayout.None;
             pictureBox13.InitialImage = (Image)resources.GetObject("pictureBox13.InitialImage");
-            pictureBox13.Location = new Point(80, 258);
+            pictureBox13.Location = new Point(89, 258);
             pictureBox13.Name = "pictureBox13";
             pictureBox13.Size = new Size(35, 36);
             pictureBox13.TabIndex = 26;
@@ -385,7 +385,7 @@ namespace LostKit
             // HiscoresFishing
             // 
             HiscoresFishing.AutoSize = true;
-            HiscoresFishing.Location = new Point(180, 226);
+            HiscoresFishing.Location = new Point(191, 226);
             HiscoresFishing.Name = "HiscoresFishing";
             HiscoresFishing.Size = new Size(12, 15);
             HiscoresFishing.TabIndex = 23;
@@ -396,7 +396,7 @@ namespace LostKit
             pictureBox11.BackgroundImage = (Image)resources.GetObject("pictureBox11.BackgroundImage");
             pictureBox11.BackgroundImageLayout = ImageLayout.None;
             pictureBox11.InitialImage = (Image)resources.GetObject("pictureBox11.InitialImage");
-            pictureBox11.Location = new Point(139, 216);
+            pictureBox11.Location = new Point(150, 216);
             pictureBox11.Name = "pictureBox11";
             pictureBox11.Size = new Size(35, 36);
             pictureBox11.TabIndex = 22;
@@ -405,7 +405,7 @@ namespace LostKit
             // HiscoresHerblore
             // 
             HiscoresHerblore.AutoSize = true;
-            HiscoresHerblore.Location = new Point(121, 226);
+            HiscoresHerblore.Location = new Point(130, 226);
             HiscoresHerblore.Name = "HiscoresHerblore";
             HiscoresHerblore.Size = new Size(12, 15);
             HiscoresHerblore.TabIndex = 21;
@@ -416,7 +416,7 @@ namespace LostKit
             pictureBox10.BackgroundImage = (Image)resources.GetObject("pictureBox10.BackgroundImage");
             pictureBox10.BackgroundImageLayout = ImageLayout.None;
             pictureBox10.InitialImage = (Image)resources.GetObject("pictureBox10.InitialImage");
-            pictureBox10.Location = new Point(80, 216);
+            pictureBox10.Location = new Point(89, 216);
             pictureBox10.Name = "pictureBox10";
             pictureBox10.Size = new Size(35, 36);
             pictureBox10.TabIndex = 20;
@@ -445,7 +445,7 @@ namespace LostKit
             // HiscoresSmithing
             // 
             HiscoresSmithing.AutoSize = true;
-            HiscoresSmithing.Location = new Point(180, 184);
+            HiscoresSmithing.Location = new Point(191, 184);
             HiscoresSmithing.Name = "HiscoresSmithing";
             HiscoresSmithing.Size = new Size(12, 15);
             HiscoresSmithing.TabIndex = 17;
@@ -456,7 +456,7 @@ namespace LostKit
             pictureBox8.BackgroundImage = (Image)resources.GetObject("pictureBox8.BackgroundImage");
             pictureBox8.BackgroundImageLayout = ImageLayout.None;
             pictureBox8.InitialImage = (Image)resources.GetObject("pictureBox8.InitialImage");
-            pictureBox8.Location = new Point(139, 174);
+            pictureBox8.Location = new Point(150, 174);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(35, 36);
             pictureBox8.TabIndex = 16;
@@ -465,7 +465,7 @@ namespace LostKit
             // HiscoresAgility
             // 
             HiscoresAgility.AutoSize = true;
-            HiscoresAgility.Location = new Point(121, 184);
+            HiscoresAgility.Location = new Point(130, 184);
             HiscoresAgility.Name = "HiscoresAgility";
             HiscoresAgility.Size = new Size(12, 15);
             HiscoresAgility.TabIndex = 15;
@@ -476,7 +476,7 @@ namespace LostKit
             pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
             pictureBox7.BackgroundImageLayout = ImageLayout.None;
             pictureBox7.InitialImage = (Image)resources.GetObject("pictureBox7.InitialImage");
-            pictureBox7.Location = new Point(80, 174);
+            pictureBox7.Location = new Point(89, 174);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(35, 36);
             pictureBox7.TabIndex = 14;
@@ -494,7 +494,7 @@ namespace LostKit
             // pictureBox6
             // 
             pictureBox6.BackgroundImage = (Image)resources.GetObject("pictureBox6.BackgroundImage");
-            pictureBox6.BackgroundImageLayout = ImageLayout.None;
+            pictureBox6.BackgroundImageLayout = ImageLayout.Center;
             pictureBox6.InitialImage = (Image)resources.GetObject("pictureBox6.InitialImage");
             pictureBox6.Location = new Point(21, 174);
             pictureBox6.Name = "pictureBox6";
@@ -505,7 +505,7 @@ namespace LostKit
             // HiscoresMining
             // 
             HiscoresMining.AutoSize = true;
-            HiscoresMining.Location = new Point(180, 142);
+            HiscoresMining.Location = new Point(191, 142);
             HiscoresMining.Name = "HiscoresMining";
             HiscoresMining.Size = new Size(12, 15);
             HiscoresMining.TabIndex = 11;
@@ -516,7 +516,7 @@ namespace LostKit
             pictureBox5.BackgroundImage = (Image)resources.GetObject("pictureBox5.BackgroundImage");
             pictureBox5.BackgroundImageLayout = ImageLayout.None;
             pictureBox5.InitialImage = (Image)resources.GetObject("pictureBox5.InitialImage");
-            pictureBox5.Location = new Point(139, 132);
+            pictureBox5.Location = new Point(150, 132);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(35, 36);
             pictureBox5.TabIndex = 10;
@@ -525,7 +525,7 @@ namespace LostKit
             // HiscoresHitpoints
             // 
             HiscoresHitpoints.AutoSize = true;
-            HiscoresHitpoints.Location = new Point(121, 142);
+            HiscoresHitpoints.Location = new Point(130, 142);
             HiscoresHitpoints.Name = "HiscoresHitpoints";
             HiscoresHitpoints.Size = new Size(12, 15);
             HiscoresHitpoints.TabIndex = 9;
@@ -536,7 +536,7 @@ namespace LostKit
             pictureBox4.BackgroundImage = (Image)resources.GetObject("pictureBox4.BackgroundImage");
             pictureBox4.BackgroundImageLayout = ImageLayout.None;
             pictureBox4.InitialImage = (Image)resources.GetObject("pictureBox4.InitialImage");
-            pictureBox4.Location = new Point(80, 132);
+            pictureBox4.Location = new Point(89, 132);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(35, 36);
             pictureBox4.TabIndex = 8;
@@ -554,7 +554,7 @@ namespace LostKit
             // pictureBox3
             // 
             pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
-            pictureBox3.BackgroundImageLayout = ImageLayout.None;
+            pictureBox3.BackgroundImageLayout = ImageLayout.Center;
             pictureBox3.InitialImage = (Image)resources.GetObject("pictureBox3.InitialImage");
             pictureBox3.Location = new Point(21, 132);
             pictureBox3.Name = "pictureBox3";
@@ -594,7 +594,7 @@ namespace LostKit
             // pictureBox1
             // 
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.None;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Center;
             pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
             pictureBox1.Location = new Point(21, 70);
             pictureBox1.Name = "pictureBox1";

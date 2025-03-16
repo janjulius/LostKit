@@ -266,6 +266,62 @@ namespace LostKit
                 case SkillType.Attack:
                     LoadHiscoreSkill(record, ref HiscoreAttack);
                     break;
+                case SkillType.Strength:
+                    LoadHiscoreSkill(record, ref HiscoresStrength);
+                    break;
+                case SkillType.Defence:
+                    LoadHiscoreSkill(record, ref HiscoresDefense);
+                    break;
+                case SkillType.Ranged:
+                    LoadHiscoreSkill(record, ref HiscoresRanged);
+                    break;
+                case SkillType.Magic:
+                    LoadHiscoreSkill(record, ref HiscoresMagic);
+                    break;
+                case SkillType.Prayer:
+                    LoadHiscoreSkill(record, ref HiscoresPrayer);
+                    break;
+                case SkillType.Runecrafting:
+                    LoadHiscoreSkill(record, ref HiscoresRunecraft);
+                    break;
+                case SkillType.Hitpoints:
+                    LoadHiscoreSkill(record, ref HiscoresHitpoints);
+                    break;
+                case SkillType.Agility:
+                    LoadHiscoreSkill(record, ref HiscoresAgility);
+                    break;
+                case SkillType.Thieving:
+                    LoadHiscoreSkill(record, ref HiscoresThieving);
+                    break;
+                case SkillType.Herblore:
+                    LoadHiscoreSkill(record, ref HiscoresHerblore);
+                    break;
+                case SkillType.Crafting:
+                    LoadHiscoreSkill(record, ref HiscoresCrafting);
+                    break;
+                case SkillType.Fletching:
+                    LoadHiscoreSkill(record, ref HiscoresFletching);
+                    break;
+                case SkillType.Mining:
+                    LoadHiscoreSkill(record, ref HiscoresMining);
+                    break;
+                case SkillType.Smithing:
+                    LoadHiscoreSkill(record, ref HiscoresSmithing);
+                    break;
+                case SkillType.Fishing:
+                    LoadHiscoreSkill(record, ref HiscoresFishing);
+                    break;
+                case SkillType.Cooking:
+                    LoadHiscoreSkill(record, ref HiscoresCooking);
+                    break;
+                case SkillType.Firemaking:
+                    LoadHiscoreSkill(record, ref HiscoresFiremaking);
+                    break;
+                case SkillType.Woodcutting:
+                    LoadHiscoreSkill(record, ref HiscoresWoodcutting);
+                    break;
+
+
             }
         }
 
