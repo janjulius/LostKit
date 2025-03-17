@@ -33,8 +33,9 @@ namespace LostKit
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
-            tabControl1 = new TabControl();
+            TabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            richTextBox1 = new RichTextBox();
             HiscoresRunecraft = new Label();
             pictureBox21 = new PictureBox();
             HiscoresWoodcutting = new Label();
@@ -80,10 +81,13 @@ namespace LostKit
             HiscoreSearchButton = new Button();
             HiscoreSearchBox = new TextBox();
             tabPage2 = new TabPage();
+            MarketTab = new TabPage();
+            webView22 = new Microsoft.Web.WebView2.WinForms.WebView2();
+            MapTab = new TabPage();
             toolTip1 = new ToolTip(components);
-            richTextBox1 = new RichTextBox();
+            webView23 = new Microsoft.Web.WebView2.WinForms.WebView2();
             ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
-            tabControl1.SuspendLayout();
+            TabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox21).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox20).BeginInit();
@@ -106,6 +110,10 @@ namespace LostKit
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            MarketTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)webView22).BeginInit();
+            MapTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)webView23).BeginInit();
             SuspendLayout();
             // 
             // webView21
@@ -119,15 +127,17 @@ namespace LostKit
             webView21.TabIndex = 0;
             webView21.ZoomFactor = 1D;
             // 
-            // tabControl1
+            // TabControl1
             // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Location = new Point(814, 12);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(241, 577);
-            tabControl1.TabIndex = 1;
+            TabControl1.Controls.Add(tabPage1);
+            TabControl1.Controls.Add(tabPage2);
+            TabControl1.Controls.Add(MarketTab);
+            TabControl1.Controls.Add(MapTab);
+            TabControl1.Location = new Point(814, 12);
+            TabControl1.Name = "TabControl1";
+            TabControl1.SelectedIndex = 0;
+            TabControl1.Size = new Size(344, 577);
+            TabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
@@ -180,9 +190,17 @@ namespace LostKit
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(233, 549);
+            tabPage1.Size = new Size(336, 549);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Hiscores";
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.Location = new Point(3, 426);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(327, 120);
+            richTextBox1.TabIndex = 44;
+            richTextBox1.Text = "";
             // 
             // HiscoresRunecraft
             // 
@@ -628,18 +646,54 @@ namespace LostKit
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(233, 549);
+            tabPage2.Size = new Size(336, 549);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Notes";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // richTextBox1
+            // MarketTab
             // 
-            richTextBox1.Location = new Point(3, 426);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(227, 120);
-            richTextBox1.TabIndex = 44;
-            richTextBox1.Text = "";
+            MarketTab.Controls.Add(webView22);
+            MarketTab.Location = new Point(4, 24);
+            MarketTab.Name = "MarketTab";
+            MarketTab.Padding = new Padding(3);
+            MarketTab.Size = new Size(336, 549);
+            MarketTab.TabIndex = 2;
+            MarketTab.Text = "Market";
+            MarketTab.UseVisualStyleBackColor = true;
+            // 
+            // webView22
+            // 
+            webView22.AllowExternalDrop = true;
+            webView22.CreationProperties = null;
+            webView22.DefaultBackgroundColor = Color.White;
+            webView22.Location = new Point(3, 3);
+            webView22.Name = "webView22";
+            webView22.Size = new Size(327, 543);
+            webView22.TabIndex = 0;
+            webView22.ZoomFactor = 1D;
+            // 
+            // MapTab
+            // 
+            MapTab.Controls.Add(webView23);
+            MapTab.Location = new Point(4, 24);
+            MapTab.Name = "MapTab";
+            MapTab.Padding = new Padding(3);
+            MapTab.Size = new Size(336, 549);
+            MapTab.TabIndex = 3;
+            MapTab.Text = "Map";
+            MapTab.UseVisualStyleBackColor = true;
+            // 
+            // webView23
+            // 
+            webView23.AllowExternalDrop = true;
+            webView23.CreationProperties = null;
+            webView23.DefaultBackgroundColor = Color.White;
+            webView23.Location = new Point(3, 3);
+            webView23.Name = "webView23";
+            webView23.Size = new Size(330, 543);
+            webView23.TabIndex = 0;
+            webView23.ZoomFactor = 1D;
             // 
             // Form1
             // 
@@ -647,14 +701,14 @@ namespace LostKit
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.Disable;
             BackColor = SystemColors.ControlDarkDark;
-            ClientSize = new Size(1067, 602);
-            Controls.Add(tabControl1);
+            ClientSize = new Size(1170, 602);
+            Controls.Add(TabControl1);
             Controls.Add(webView21);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             Text = "LostKit";
             ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
-            tabControl1.ResumeLayout(false);
+            TabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox21).EndInit();
@@ -678,13 +732,17 @@ namespace LostKit
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            MarketTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)webView22).EndInit();
+            MapTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)webView23).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
-        private TabControl tabControl1;
+        private TabControl TabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
         private TextBox HiscoreSearchBox;
@@ -733,5 +791,9 @@ namespace LostKit
         private Label HiscoresHitpoints;
         private PictureBox pictureBox4;
         private RichTextBox richTextBox1;
+        private TabPage MarketTab;
+        private Microsoft.Web.WebView2.WinForms.WebView2 webView22;
+        private TabPage MapTab;
+        private Microsoft.Web.WebView2.WinForms.WebView2 webView23;
     }
 }

@@ -21,8 +21,43 @@ namespace LostKit
             LoadWorldData();
 
             RenderWebPage();
+            RenderMarketPage();
+            RenderMapPage();
         }
 
+        private void RenderMapPage()
+        {
+            webView23.Source = new Uri($"https://2004.lostcity.rs/worldmap");
+            webView23.EnsureCoreWebView2Async();
+            webView23.NavigationCompleted += (s, e) => ResizeMap();
+
+        }
+
+        private async void ResizeMap()
+        {
+            if (webView23.CoreWebView2 != null)
+            {
+                await webView23.CoreWebView2.ExecuteScriptAsync(
+                    """
+                    var canv = document.getElementById('canvas');
+                    canv.width = 330;
+                    canv.height = 543; 
+                    var secondCenter = document.querySelectorAll('center')[1]; 
+                    if (secondCenter) { secondCenter.remove(); }
+                                    var brElements = document.querySelectorAll('br'); // Select all <br> elements
+                brElements.forEach(function(br) {
+                    br.remove(); // Remove each <br> element
+                });
+                """
+                    );
+            }
+        }
+
+        private void RenderMarketPage()
+        {
+            webView22.Source = new Uri($"https://lostcity.markets/");
+            webView22.EnsureCoreWebView2Async();
+        }
 
         private void RenderWebPage()
         {
@@ -187,7 +222,7 @@ namespace LostKit
 
             reloadButton.Click += (sender, e) =>
             {
-                foreach (TabPage tab in tabControl1.TabPages)
+                foreach (TabPage tab in TabControl1.TabPages)
                 {
                     if (tab.Text == "Worlds")
                     {
@@ -195,11 +230,11 @@ namespace LostKit
                     }
                 }
 
-                for (int i = 0; i < tabControl1.TabPages.Count; i++)
+                for (int i = 0; i < TabControl1.TabPages.Count; i++)
                 {
-                    if (tabControl1.TabPages[i].Text == "Worlds")
+                    if (TabControl1.TabPages[i].Text == "Worlds")
                     {
-                        tabControl1.TabPages.RemoveAt(i);
+                        TabControl1.TabPages.RemoveAt(i);
                         break;
                     }
                 }
@@ -264,7 +299,7 @@ namespace LostKit
             };
 
             tabPage.Controls.Add(toggleLabelsCheckBox);
-            tabControl1.TabPages.Add(tabPage);
+            TabControl1.TabPages.Add(tabPage);
         }
 
         private void OnWorldDoubleClick(WorldData world)
