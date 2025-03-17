@@ -31,10 +31,27 @@ jobs:
 
       - name: Package Compiled Files as RAR
         run: |
-          # RAR the compiled EXE and dependencies
+          # Verify the publish folder exists
+          if (Test-Path "bin\Release\net8.0\win-x64\publish") {
+            Write-Host "Publish folder exists"
+          } else {
+            Write-Host "Publish folder does not exist"
+            exit 1
+          }
+
+          # Create RAR file with the compiled EXE and dependencies
           & "C:\Program Files\WinRAR\WinRAR.exe" a -r CompiledFiles.rar bin\Release\net8.0\win-x64\publish\*
-          # Move the .rar file to the workspace for release
-          mv CompiledFiles.rar ${{ github.workspace }}
+
+          # Check if the RAR file was created successfully
+          if (Test-Path "CompiledFiles.rar") {
+            Write-Host "CompiledFiles.rar created"
+          } else {
+            Write-Host "CompiledFiles.rar not created"
+            exit 1
+          }
+
+          # Move the .rar file to the GitHub workspace for release
+          mv .\CompiledFiles.rar ${{ github.workspace }}
         shell: powershell
 
       - name: Package Source Code as RAR
@@ -42,7 +59,7 @@ jobs:
           # RAR the source code (excluding unnecessary files)
           & "C:\Program Files\WinRAR\WinRAR.exe" a -r SourceCode.rar *
           # Move the .rar file to the workspace for release
-          mv SourceCode.rar ${{ github.workspace }}
+          mv .\SourceCode.rar ${{ github.workspace }}
         shell: powershell
 
       - name: Create GitHub Release
