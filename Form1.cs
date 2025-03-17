@@ -4,6 +4,7 @@ using LostKit.Models;
 using Microsoft.Web.WebView2.WinForms;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Windows.Forms;
 
 namespace LostKit
 {
@@ -37,7 +38,6 @@ namespace LostKit
             webView.EnsureCoreWebView2Async();
 
             webView.NavigationCompleted += (s, e) => RemoveGameFrameTop();
-            SearchPlayerByName("dog");
         }
 
         private async void RemoveGameFrameTop()
@@ -88,6 +88,7 @@ namespace LostKit
         {
             try
             {
+                worldList.Clear();
                 // Fetch HTML content from the URL
                 string url = "https://2004.lostcity.rs/serverlist?hires.x=112&hires.y=16&method=0";
                 string htmlContent = await httpClient.GetStringAsync(url);
@@ -164,14 +165,54 @@ namespace LostKit
 
         private void PopulateWorldTabPage()
         {
-            // Create a new TabPage
             TabPage tabPage = new TabPage("Worlds");
-
             int yOffset = 10; // Start at the top of the TabPage
+            List<Label> worldLabels = new List<Label>();
+
+            CheckBox toggleLabelsCheckBox = new CheckBox
+            {
+                Text = "Allow double-click to swap worlds",
+                Location = new Point(10, yOffset),
+                AutoSize = true,
+                Checked = true // Labels start enabled
+            };
+            yOffset += 20;
+
+            Button reloadButton = new Button
+            {
+                Text = "Reload",
+                Location = new Point(10, yOffset),
+                AutoSize = true
+            };
+
+            reloadButton.Click += (sender, e) =>
+            {
+                foreach (TabPage tab in tabControl1.TabPages)
+                {
+                    if (tab.Text == "Worlds")
+                    {
+                        tab.Controls.Clear();
+                    }
+                }
+
+                for (int i = 0; i < tabControl1.TabPages.Count; i++)
+                {
+                    if (tabControl1.TabPages[i].Text == "Worlds")
+                    {
+                        tabControl1.TabPages.RemoveAt(i);
+                        break;
+                    }
+                }
+
+                LoadWorldData();
+            };
+            yOffset += 25;
+            tabPage.Controls.Add(reloadButton);
+
 
             foreach (var world in worldList)
             {
-                // Create labels for world name, country, player count
+
                 Label worldNameLabel = new Label
                 {
                     Text = $"{world.WorldName} ({world.PlayerCount} players)",
@@ -180,6 +221,7 @@ namespace LostKit
                 };
                 yOffset += worldNameLabel.Height + 5;
 
+                worldLabels.Add(worldNameLabel);
                 //Label countryLabel = new Label
                 //{
                 //    Text = $"Country: {world.Country}",
@@ -196,7 +238,6 @@ namespace LostKit
                 //};
                 //yOffset += playerCountLabel.Height + 5;
 
-                // Create a PictureBox for the flag
                 //PictureBox flagPictureBox = new PictureBox
                 //{
                 //    Location = new Point(10, yOffset),
@@ -209,15 +250,20 @@ namespace LostKit
 
                 worldNameLabel.DoubleClick += (sender, e) => OnWorldDoubleClick(world); // Double-click handler for flag image
 
-
-                // Add the controls to the TabPage
                 tabPage.Controls.Add(worldNameLabel);
                 //tabPage.Controls.Add(countryLabel);
                 //tabPage.Controls.Add(playerCountLabel);
                 //tabPage.Controls.Add(flagPictureBox);
             }
+            toggleLabelsCheckBox.CheckedChanged += (sender, e) =>
+            {
+                foreach (var label in worldLabels)
+                {
+                    label.Visible = toggleLabelsCheckBox.Checked;
+                }
+            };
 
-            // Add the TabPage to the TabControl
+            tabPage.Controls.Add(toggleLabelsCheckBox);
             tabControl1.TabPages.Add(tabPage);
         }
 
@@ -234,7 +280,8 @@ namespace LostKit
 
         private async void HigscoreSearch_onclick(object sender, MouseEventArgs e)
         {
-            var skillRecords = await SearchPlayerByName(HiscoreSearchBox.Text.Trim().ToLower().Replace(' ', '_'));
+            var searchName = HiscoreSearchBox.Text.Trim().ToLower().Replace(' ', '_');
+            var skillRecords = await SearchPlayerByName(searchName);
 
             if (skillRecords != null)
             {
@@ -252,6 +299,41 @@ namespace LostKit
                     skillRecords[(int)SkillType.Prayer].Level));
             }
 
+            LoadAdventureLog(searchName);
+
+        }
+
+        private async void LoadAdventureLog(string searchName)
+        {
+            string url = $"https://2004.lostcity.rs/player/adventurelog/{searchName}";
+            string htmlContent = await httpClient.GetStringAsync(url);
+
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(htmlContent);
+
+            List<string> extractedData = new List<string>();
+
+            var divs = doc.DocumentNode.SelectNodes("//div[@style='text-align: left']");
+
+
+            if (divs != null)
+            {
+                foreach (var div in divs)
+                {
+                    var dateNode = div.SelectSingleNode(".//span");
+                    var eventText = div.InnerText.Trim();
+
+                    if (dateNode != null)
+                    {
+                        string date = dateNode.InnerText.Trim();
+                        string eventDetail = eventText.Replace(date, "").Trim();
+                        extractedData.Add($"{date} - {eventDetail}");
+                    }
+                }
+            }
+            richTextBox1.Text = extractedData.Count > 0
+                ? string.Join(Environment.NewLine + "---" + Environment.NewLine, extractedData)
+                : "No events found.";
         }
 
         private void LoadHiscoreSkill(SkillRecord record)
@@ -341,17 +423,17 @@ namespace LostKit
 
         private double GetCombatLevel(int attack, int strength, int hitpoints, int defense, int ranged, int magic, int prayer)
         {
-                int base_lvl = Convert.ToInt32(prayer / 2 - 0.5 + hitpoints + defense) / 4;
-                int melee = Convert.ToInt32((attack + strength) * 0.325);
-                int range = Convert.ToInt32((ranged * 1.5 - 0.5) * 0.325);
-                int mage = Convert.ToInt32((magic * 1.5 - 0.5) * 0.325);
+            int base_lvl = Convert.ToInt32(prayer / 2 - 0.5 + hitpoints + defense) / 4;
+            int melee = Convert.ToInt32((attack + strength) * 0.325);
+            int range = Convert.ToInt32((ranged * 1.5 - 0.5) * 0.325);
+            int mage = Convert.ToInt32((magic * 1.5 - 0.5) * 0.325);
 
-                if (range > melee || mage > melee)
-                {
-                    return range >= mage ? base_lvl + range : base_lvl + mage;
-                }
+            if (range > melee || mage > melee)
+            {
+                return range >= mage ? base_lvl + range : base_lvl + mage;
+            }
 
-                return base_lvl + melee;
+            return base_lvl + melee;
             
         }
     }

@@ -81,6 +81,7 @@ namespace LostKit
             HiscoreSearchBox = new TextBox();
             tabPage2 = new TabPage();
             toolTip1 = new ToolTip(components);
+            richTextBox1 = new RichTextBox();
             ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -131,6 +132,7 @@ namespace LostKit
             // tabPage1
             // 
             tabPage1.BackColor = Color.DimGray;
+            tabPage1.Controls.Add(richTextBox1);
             tabPage1.Controls.Add(HiscoresRunecraft);
             tabPage1.Controls.Add(pictureBox21);
             tabPage1.Controls.Add(HiscoresWoodcutting);
@@ -631,6 +633,14 @@ namespace LostKit
             tabPage2.Text = "Notes";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // richTextBox1
+            // 
+            richTextBox1.Location = new Point(3, 426);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(227, 120);
+            richTextBox1.TabIndex = 44;
+            richTextBox1.Text = "";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -722,5 +732,6 @@ namespace LostKit
         private PictureBox pictureBox5;
         private Label HiscoresHitpoints;
         private PictureBox pictureBox4;
+        private RichTextBox richTextBox1;
     }
 }
