@@ -496,5 +496,10 @@ namespace LostKit
             return base_lvl + melee;
             
         }
+
+        private void SetTitle(string title)
+        {
+            form1
+        }
     }
 }

@@ -696,7 +696,7 @@ namespace LostKit
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.Disable;
-            BackColor = SystemColors.ControlDarkDark;
+            BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(1170, 602);
             Controls.Add(TabControl1);
             Icon = (Icon)resources.GetObject("$this.Icon");
