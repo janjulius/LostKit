@@ -1,0 +1,63 @@
+name: Build and Package WinForms App
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x # Change to match your project
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build solution
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Publish Portable EXE
+        run: dotnet publish -c Release -r win-x64 --self-contained true -o ./portable
+
+      - name: Upload Portable EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: winforms-portable
+          path: ./portable/
+
+  package:
+    runs-on: windows-latest
+    needs: build
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download Portable EXE
+        uses: actions/download-artifact@v4
+        with:
+          name: winforms-portable
+          path: ./portable/
+
+      - name: Install Inno Setup
+        run: choco install innosetup -y
+
+      - name: Create Installer using Inno Setup
+        run: iscc /DAppVersion=1.0.0 installer_script.iss
+
+      - name: Upload Installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: winforms-installer
+          path: ./OutputInstaller/
