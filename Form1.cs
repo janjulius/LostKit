@@ -15,14 +15,39 @@ namespace LostKit
         private List<WorldData> worldList = new List<WorldData>();
         private readonly HttpClient httpClient = new HttpClient();
 
+        private string notesFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "NotesApp", "notes.txt");
+
+
         public Form1()
         {
+            Directory.CreateDirectory(Path.GetDirectoryName(notesFilePath));
             InitializeComponent();
             LoadWorldData();
 
             RenderWebPage();
             RenderMarketPage();
             RenderMapPage();
+            LoadNotes();
+
+            this.FormClosing += Application_FormClosing;
+        }
+
+        private void Application_FormClosing(object? sender, FormClosingEventArgs e)
+        {
+            SaveNotes();
+        }
+
+        private void LoadNotes()
+        {
+            if (File.Exists(notesFilePath))
+            {
+                NotesTextBox.Text = File.ReadAllText(notesFilePath);
+            }
+        }
+
+        private void SaveNotes()
+        {
+            File.WriteAllText(notesFilePath, NotesTextBox.Text);
         }
 
         private void RenderMapPage()

@@ -84,8 +84,9 @@ namespace LostKit
             MarketTab = new TabPage();
             webView22 = new Microsoft.Web.WebView2.WinForms.WebView2();
             MapTab = new TabPage();
-            toolTip1 = new ToolTip(components);
             webView23 = new Microsoft.Web.WebView2.WinForms.WebView2();
+            toolTip1 = new ToolTip(components);
+            NotesTextBox = new RichTextBox();
             ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
             TabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -110,6 +111,7 @@ namespace LostKit
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            tabPage2.SuspendLayout();
             MarketTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)webView22).BeginInit();
             MapTab.SuspendLayout();
@@ -643,6 +645,7 @@ namespace LostKit
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(NotesTextBox);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -695,6 +698,14 @@ namespace LostKit
             webView23.TabIndex = 0;
             webView23.ZoomFactor = 1D;
             // 
+            // NotesTextBox
+            // 
+            NotesTextBox.Location = new Point(3, 3);
+            NotesTextBox.Name = "NotesTextBox";
+            NotesTextBox.Size = new Size(327, 540);
+            NotesTextBox.TabIndex = 0;
+            NotesTextBox.Text = "";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -732,6 +743,7 @@ namespace LostKit
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            tabPage2.ResumeLayout(false);
             MarketTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)webView22).EndInit();
             MapTab.ResumeLayout(false);
@@ -795,5 +807,6 @@ namespace LostKit
         private Microsoft.Web.WebView2.WinForms.WebView2 webView22;
         private TabPage MapTab;
         private Microsoft.Web.WebView2.WinForms.WebView2 webView23;
+        private RichTextBox NotesTextBox;
     }
 }
