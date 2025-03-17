@@ -3,58 +3,40 @@ name: Build and Release WinForms App
 on:
   push:
     tags:
-      - "v*"   # Triggers on version tags like v1.0.0
-  workflow_dispatch:  # Allows manual execution
+      - "v*.*.*"  # Runs only when a new version tag (e.g., v1.0.0) is pushed
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-latest  # Use Windows for building WinForms apps
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 8.0.x  # Change this to your .NET version
+          dotnet-version: "8.0.x"  # Change to match your .NET version
 
       - name: Restore dependencies
         run: dotnet restore
 
-      - name: Build solution
-        run: dotnet build --configuration Release --no-restore
+      - name: Build and Publish as Single EXE
+        run: dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
 
-      - name: Publish Portable EXE
-        run: dotnet publish -c Release -r win-x64 --self-contained true -o ./portable
+      - name: Install WinRAR (or use 7-Zip if preferred)
+        run: |
+          choco install winrar -y
+        shell: powershell
 
-      - name: Upload Portable EXE as Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: winforms-portable
-          path: ./portable/MyApp.exe
-
-  release:
-    runs-on: windows-latest
-    needs: build
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Download Portable EXE
-        uses: actions/download-artifact@v4
-        with:
-          name: winforms-portable
-          path: ./portable/
+      - name: Package as RAR
+        run: |
+          & "C:\Program Files\WinRAR\WinRAR.exe" a -r WinFormsApp.rar bin\Release\net8.0\win-x64\publish\*
+        shell: powershell
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: ./portable/MyApp.exe
-          tag_name: ${{ github.ref_name }}
-          name: Release ${{ github.ref_name }}
-          body: "🚀 New release of MyApp!"
-          draft: false
-          prerelease: false
+          files: WinFormsApp.rar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

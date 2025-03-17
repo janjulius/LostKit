@@ -32,9 +32,9 @@ namespace LostKit
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             TabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            HiscoreSearchButton = new Button();
             richTextBox1 = new RichTextBox();
             HiscoresRunecraft = new Label();
             pictureBox21 = new PictureBox();
@@ -86,8 +86,6 @@ namespace LostKit
             MapTab = new TabPage();
             webView23 = new Microsoft.Web.WebView2.WinForms.WebView2();
             toolTip1 = new ToolTip(components);
-            HiscoreSearchButton = new Button();
-            ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
             TabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox21).BeginInit();
@@ -117,17 +115,6 @@ namespace LostKit
             MapTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)webView23).BeginInit();
             SuspendLayout();
-            // 
-            // webView21
-            // 
-            webView21.AllowExternalDrop = true;
-            webView21.CreationProperties = null;
-            webView21.DefaultBackgroundColor = Color.White;
-            webView21.Location = new Point(137, 71);
-            webView21.Name = "webView21";
-            webView21.Size = new Size(75, 23);
-            webView21.TabIndex = 0;
-            webView21.ZoomFactor = 1D;
             // 
             // TabControl1
             // 
@@ -195,6 +182,16 @@ namespace LostKit
             tabPage1.Size = new Size(336, 549);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Hiscores";
+            // 
+            // HiscoreSearchButton
+            // 
+            HiscoreSearchButton.Location = new Point(171, 18);
+            HiscoreSearchButton.Name = "HiscoreSearchButton";
+            HiscoreSearchButton.Size = new Size(75, 23);
+            HiscoreSearchButton.TabIndex = 45;
+            HiscoreSearchButton.Text = "Search";
+            HiscoreSearchButton.UseVisualStyleBackColor = true;
+            HiscoreSearchButton.MouseClick += HigscoreSearch_onclick;
             // 
             // richTextBox1
             // 
@@ -694,16 +691,6 @@ namespace LostKit
             webView23.TabIndex = 0;
             webView23.ZoomFactor = 1D;
             // 
-            // HiscoreSearchButton
-            // 
-            HiscoreSearchButton.Location = new Point(171, 18);
-            HiscoreSearchButton.Name = "HiscoreSearchButton";
-            HiscoreSearchButton.Size = new Size(75, 23);
-            HiscoreSearchButton.TabIndex = 45;
-            HiscoreSearchButton.Text = "Search";
-            HiscoreSearchButton.UseVisualStyleBackColor = true;
-            HiscoreSearchButton.MouseClick += HigscoreSearch_onclick;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -712,11 +699,9 @@ namespace LostKit
             BackColor = SystemColors.ControlDarkDark;
             ClientSize = new Size(1170, 602);
             Controls.Add(TabControl1);
-            Controls.Add(webView21);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             Text = "LostKit";
-            ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
             TabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
@@ -750,8 +735,6 @@ namespace LostKit
         }
 
         #endregion
-
-        private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
         private TabControl TabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
