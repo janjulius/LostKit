@@ -16,27 +16,40 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: "8.0.x"  # Change to match your .NET version
+          dotnet-version: "8.0.x"  # Change this to your .NET version
 
       - name: Restore dependencies
         run: dotnet restore
 
       - name: Build and Publish as Single EXE
         run: dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
-
-      - name: Install WinRAR (or use 7-Zip if preferred)
-        run: |
-          choco install winrar -y
         shell: powershell
 
-      - name: Package as RAR
+      - name: Install WinRAR
+        run: choco install winrar -y
+        shell: powershell
+
+      - name: Package Compiled Files as RAR
         run: |
-          & "C:\Program Files\WinRAR\WinRAR.exe" a -r WinFormsApp.rar bin\Release\net8.0\win-x64\publish\*
+          # RAR the compiled EXE and dependencies
+          & "C:\Program Files\WinRAR\WinRAR.exe" a -r CompiledFiles.rar bin\Release\net8.0\win-x64\publish\*
+          # Move the .rar file to the workspace for release
+          mv CompiledFiles.rar ${{ github.workspace }}
+        shell: powershell
+
+      - name: Package Source Code as RAR
+        run: |
+          # RAR the source code (excluding unnecessary files)
+          & "C:\Program Files\WinRAR\WinRAR.exe" a -r SourceCode.rar *
+          # Move the .rar file to the workspace for release
+          mv SourceCode.rar ${{ github.workspace }}
         shell: powershell
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: WinFormsApp.rar
+          files: |
+            CompiledFiles.rar
+            SourceCode.rar
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}  # Use your Personal Access Token (PAT)
