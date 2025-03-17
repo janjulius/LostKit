@@ -1,14 +1,11 @@
-name: Build and Package WinForms App
+name: Build and Release WinForms App
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
-  
+    tags:
+      - "v*"   # Triggers on version tags like v1.0.0
+  workflow_dispatch:  # Allows manual execution
+
 jobs:
   build:
     runs-on: windows-latest
@@ -20,7 +17,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x # Change to match your project
+          dotnet-version: 8.0.x  # Change this to your .NET version
 
       - name: Restore dependencies
         run: dotnet restore
@@ -31,16 +28,15 @@ jobs:
       - name: Publish Portable EXE
         run: dotnet publish -c Release -r win-x64 --self-contained true -o ./portable
 
-      - name: Upload Portable EXE
+      - name: Upload Portable EXE as Artifact
         uses: actions/upload-artifact@v4
         with:
           name: winforms-portable
-          path: ./portable/
+          path: ./portable/MyApp.exe
 
-  package:
+  release:
     runs-on: windows-latest
     needs: build
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -51,14 +47,14 @@ jobs:
           name: winforms-portable
           path: ./portable/
 
-      - name: Install Inno Setup
-        run: choco install innosetup -y
-
-      - name: Create Installer using Inno Setup
-        run: iscc /DAppVersion=1.0.0 installer_script.iss
-
-      - name: Upload Installer
-        uses: actions/upload-artifact@v4
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: winforms-installer
-          path: ./OutputInstaller/
+          files: ./portable/MyApp.exe
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body: "🚀 New release of MyApp!"
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
