@@ -22,7 +22,10 @@ jobs:
         run: dotnet restore
 
       - name: Build and Publish as Single EXE
-        run: dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
+        run: |
+          dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
+          # Show the contents of the directory where the app is published
+          dir bin\Release\net8.0\win-x64\publish\
         shell: powershell
 
       - name: Install WinRAR
@@ -31,18 +34,19 @@ jobs:
 
       - name: Package Compiled Files as RAR
         run: |
-          # Verify the publish folder exists
+          # Verify the publish folder exists and show its contents
           if (Test-Path "bin\Release\net8.0\win-x64\publish") {
             Write-Host "Publish folder exists"
+            dir bin\Release\net8.0\win-x64\publish\  # Display folder contents for debugging
           } else {
             Write-Host "Publish folder does not exist"
             exit 1
           }
 
-          # Create RAR file with the compiled EXE and dependencies
+          # Create the RAR file with the compiled EXE and dependencies
           & "C:\Program Files\WinRAR\WinRAR.exe" a -r CompiledFiles.rar bin\Release\net8.0\win-x64\publish\*
 
-          # Check if the RAR file was created successfully
+          # Check if the RAR file was created
           if (Test-Path "CompiledFiles.rar") {
             Write-Host "CompiledFiles.rar created"
           } else {
