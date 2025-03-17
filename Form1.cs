@@ -127,11 +127,11 @@ namespace LostKit
                         string country = countryNode?.GetAttributeValue("title", "Unknown");
 
                         // Find the number of players in the next <td> cell
-                        var playerCountNode = worldNode.Ancestors("tr").FirstOrDefault()?.SelectNodes("following-sibling::tr[1]//td[2]");
+                        var playerCountNode = worldNode.Ancestors("tr").FirstOrDefault()?.SelectSingleNode("./td[2]");
                         int playerCount = 0;
                         if (playerCountNode != null)
                         {
-                            string playerText = playerCountNode.First().InnerText.Trim();
+                            string playerText = playerCountNode.InnerText.Trim();
                             if (int.TryParse(playerText.Split(' ')[0], out int players))
                             {
                                 playerCount = players;
