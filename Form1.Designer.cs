@@ -78,15 +78,15 @@ namespace LostKit
             pictureBox2 = new PictureBox();
             HiScoreOverall = new Label();
             pictureBox1 = new PictureBox();
-            HiscoreSearchButton = new Button();
             HiscoreSearchBox = new TextBox();
             tabPage2 = new TabPage();
+            NotesTextBox = new RichTextBox();
             MarketTab = new TabPage();
             webView22 = new Microsoft.Web.WebView2.WinForms.WebView2();
             MapTab = new TabPage();
             webView23 = new Microsoft.Web.WebView2.WinForms.WebView2();
             toolTip1 = new ToolTip(components);
-            NotesTextBox = new RichTextBox();
+            HiscoreSearchButton = new Button();
             ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
             TabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -144,6 +144,7 @@ namespace LostKit
             // tabPage1
             // 
             tabPage1.BackColor = Color.DimGray;
+            tabPage1.Controls.Add(HiscoreSearchButton);
             tabPage1.Controls.Add(richTextBox1);
             tabPage1.Controls.Add(HiscoresRunecraft);
             tabPage1.Controls.Add(pictureBox21);
@@ -187,7 +188,6 @@ namespace LostKit
             tabPage1.Controls.Add(pictureBox2);
             tabPage1.Controls.Add(HiScoreOverall);
             tabPage1.Controls.Add(pictureBox1);
-            tabPage1.Controls.Add(HiscoreSearchButton);
             tabPage1.Controls.Add(HiscoreSearchBox);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
@@ -624,18 +624,6 @@ namespace LostKit
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
-            // HiscoreSearchButton
-            // 
-            HiscoreSearchButton.BackgroundImage = (Image)resources.GetObject("HiscoreSearchButton.BackgroundImage");
-            HiscoreSearchButton.BackgroundImageLayout = ImageLayout.None;
-            HiscoreSearchButton.Location = new Point(173, 17);
-            HiscoreSearchButton.Name = "HiscoreSearchButton";
-            HiscoreSearchButton.Size = new Size(36, 41);
-            HiscoreSearchButton.TabIndex = 1;
-            HiscoreSearchButton.Text = "\r\n";
-            HiscoreSearchButton.UseVisualStyleBackColor = true;
-            HiscoreSearchButton.MouseClick += HigscoreSearch_onclick;
-            // 
             // HiscoreSearchBox
             // 
             HiscoreSearchBox.Location = new Point(21, 18);
@@ -653,6 +641,14 @@ namespace LostKit
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Notes";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // NotesTextBox
+            // 
+            NotesTextBox.Location = new Point(3, 3);
+            NotesTextBox.Name = "NotesTextBox";
+            NotesTextBox.Size = new Size(327, 540);
+            NotesTextBox.TabIndex = 0;
+            NotesTextBox.Text = "";
             // 
             // MarketTab
             // 
@@ -698,13 +694,15 @@ namespace LostKit
             webView23.TabIndex = 0;
             webView23.ZoomFactor = 1D;
             // 
-            // NotesTextBox
+            // HiscoreSearchButton
             // 
-            NotesTextBox.Location = new Point(3, 3);
-            NotesTextBox.Name = "NotesTextBox";
-            NotesTextBox.Size = new Size(327, 540);
-            NotesTextBox.TabIndex = 0;
-            NotesTextBox.Text = "";
+            HiscoreSearchButton.Location = new Point(171, 18);
+            HiscoreSearchButton.Name = "HiscoreSearchButton";
+            HiscoreSearchButton.Size = new Size(75, 23);
+            HiscoreSearchButton.TabIndex = 45;
+            HiscoreSearchButton.Text = "Search";
+            HiscoreSearchButton.UseVisualStyleBackColor = true;
+            HiscoreSearchButton.MouseClick += HigscoreSearch_onclick;
             // 
             // Form1
             // 
@@ -758,7 +756,6 @@ namespace LostKit
         private TabPage tabPage1;
         private TabPage tabPage2;
         private TextBox HiscoreSearchBox;
-        private Button HiscoreSearchButton;
         private PictureBox pictureBox1;
         private Label HiScoreOverall;
         private ToolTip toolTip1;
@@ -808,5 +805,6 @@ namespace LostKit
         private TabPage MapTab;
         private Microsoft.Web.WebView2.WinForms.WebView2 webView23;
         private RichTextBox NotesTextBox;
+        private Button HiscoreSearchButton;
     }
 }
