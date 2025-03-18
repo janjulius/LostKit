@@ -1,70 +1,43 @@
-name: Build and Release Windows Forms App
+name: Build and Release WinForms App
 
 on:
   push:
     tags:
-      - 'v*'  # Trigger workflow on version tags like v1.0.0
+      - "v*.*.*"  # Runs only when a new version tag (e.g., v1.0.0) is pushed
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-latest  # Use Windows for building WinForms apps
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '8.x'  # Use the .NET 8.0 SDK
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "8.0.x"  # Change to match your .NET version
 
-    - name: Restore dependencies
-      run: dotnet restore LostKit.sln
+      - name: Restore dependencies
+        run: dotnet restore
 
-    - name: Update .NET workloads
-      run: dotnet workload update
+      - name: Build and Publish as Single EXE
+        run: dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true --output ./publish
 
-    - name: Build project
-      run: dotnet build LostKit.sln --configuration Release
+      - name: Install WinRAR (or use 7-Zip if preferred)
+        run: |
+          choco install winrar -y
+        shell: powershell
 
-    - name: Publish project
-      run: dotnet publish LostKit.sln --configuration Release --runtime win-x64 --self-contained true --output ./publish
+      - name: Package as RAR
+        run: |
+          mkdir output
+          & "C:\Program Files\WinRAR\WinRAR.exe" a -r output/WinFormsApp.rar ./publish\*
+        shell: powershell
 
-    - name: Verify publish output
-      run: |
-        if (!(Test-Path -Path "./publish")) {
-          Write-Error "Publish directory does not exist. Please check the publish step for issues."
-        } else {
-          Write-Host "Publish directory exists and is ready."
-        }
-      shell: pwsh
-
-    - name: Install WinRAR
-      run: |
-        choco install winrar -y  # Installs WinRAR using Chocolatey
-        echo "WinRAR installed successfully"
-
-    - name: Package compiled code
-      run: |
-        mkdir output
-        "C:\Program Files\WinRAR\rar.exe" a -r output/LostKit.rar ./publish
-      shell: cmd
-
-    - name: Create GitHub release
-      id: create_release
-      uses: actions/create-release@v1
-      with:
-        tag_name: ${{ github.ref_name }}
-        release_name: Release ${{ github.ref_name }}
-        draft: false
-        prerelease: false
-        token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Upload .rar to release
-      uses: actions/upload-release-asset@v1
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        release_id: ${{ steps.create_release.outputs.id }}
-        asset_path: output/LostKit.rar
-        asset_name: LostKit.rar
-        asset_content_type: application/x-rar-compressed
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: output/WinFormsApp.rar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
