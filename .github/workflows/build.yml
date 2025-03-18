@@ -32,7 +32,7 @@ jobs:
       - name: Package as RAR
         run: |
           mkdir output
-          & "C:\Program Files\WinRAR\WinRAR.exe" a -r output/WinFormsApp.rar ./publish\*
+          & "C:\Program Files\WinRAR\WinRAR.exe" a -r -ep1 output/WinFormsApp.rar ./publish/*
         shell: powershell
 
       - name: Create GitHub Release
