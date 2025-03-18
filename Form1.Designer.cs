@@ -87,6 +87,9 @@ namespace LostKit
             MapTab = new TabPage();
             webView23 = new Microsoft.Web.WebView2.WinForms.WebView2();
             toolTip1 = new ToolTip(components);
+            menuStrip1 = new MenuStrip();
+            lostKitToolStripMenuItem = new ToolStripMenuItem();
+            preferencesToolStripMenuItem = new ToolStripMenuItem();
             TabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox21).BeginInit();
@@ -115,6 +118,7 @@ namespace LostKit
             ((System.ComponentModel.ISupportInitialize)webView22).BeginInit();
             MapTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)webView23).BeginInit();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // TabControl1
@@ -749,6 +753,29 @@ namespace LostKit
             webView23.TabIndex = 0;
             webView23.ZoomFactor = 1D;
             // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { lostKitToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1170, 24);
+            menuStrip1.TabIndex = 2;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // lostKitToolStripMenuItem
+            // 
+            lostKitToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { preferencesToolStripMenuItem });
+            lostKitToolStripMenuItem.Name = "lostKitToolStripMenuItem";
+            lostKitToolStripMenuItem.Size = new Size(55, 20);
+            lostKitToolStripMenuItem.Text = "LostKit";
+            // 
+            // preferencesToolStripMenuItem
+            // 
+            preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
+            preferencesToolStripMenuItem.Size = new Size(180, 22);
+            preferencesToolStripMenuItem.Text = "Preferences";
+            preferencesToolStripMenuItem.MouseDown += preferencesToolStripMenuItem_MouseDown;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -757,9 +784,12 @@ namespace LostKit
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(1170, 602);
             Controls.Add(TabControl1);
+            Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "LostKit";
+            MouseMove += Form1_MouseMove;
             TabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
@@ -789,7 +819,10 @@ namespace LostKit
             ((System.ComponentModel.ISupportInitialize)webView22).EndInit();
             MapTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)webView23).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -848,5 +881,8 @@ namespace LostKit
         private RichTextBox NotesTextBox;
         private Button HiscoreSearchButton;
         private RichTextBox SkillExtraInfoBox;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem lostKitToolStripMenuItem;
+        private ToolStripMenuItem preferencesToolStripMenuItem;
     }
 }
