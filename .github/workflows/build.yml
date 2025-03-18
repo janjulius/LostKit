@@ -38,7 +38,7 @@ jobs:
       - name: Package Entire Publish Folder as RAR
         run: |
           mkdir output
-          & "C:\Program Files\WinRAR\WinRAR.exe" a -r -ep1 output/WinFormsApp.rar ./publish\*
+          & "C:\Program Files\WinRAR\WinRAR.exe" a -r -ep1 output/WinFormsApp.rar "publish\*"
           echo "Packaging completed successfully."
         shell: powershell
 
