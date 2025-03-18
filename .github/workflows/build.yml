@@ -3,11 +3,11 @@ name: Build and Release WinForms App
 on:
   push:
     tags:
-      - "v*.*.*"  # Runs only when a new version tag (e.g., v1.0.0) is pushed
+      - "v*.*.*"  # Trigger workflow when a new version tag is pushed (e.g., v1.0.0)
 
 jobs:
   build:
-    runs-on: windows-latest  # Use Windows for building WinForms apps
+    runs-on: windows-latest  # Use Windows runner for building Windows apps
 
     steps:
       - name: Checkout repository
@@ -16,23 +16,40 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: "8.0.x"  # Change to match your .NET version
+          dotnet-version: "8.0.x"  # Use .NET 8.0 SDK
 
       - name: Restore dependencies
         run: dotnet restore
 
-      - name: Build and Publish as Single EXE
-        run: dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true --output ./publish
+      - name: Build and Publish Project
+        run: dotnet publish -c Release -r win-x64 --self-contained true --output ./publish
 
-      - name: Install WinRAR (or use 7-Zip if preferred)
+      - name: Verify Published Files
+        run: |
+          echo "Listing all files in the publish directory:"
+          dir ./publish /s
+        shell: powershell
+
+      - name: Install WinRAR
         run: |
           choco install winrar -y
         shell: powershell
 
-      - name: Package as RAR
+      - name: Package Entire Publish Folder as RAR
         run: |
           mkdir output
-          & "C:\Program Files\WinRAR\WinRAR.exe" a -r -ep1 output/WinFormsApp.rar ./publish/*
+          & "C:\Program Files\WinRAR\WinRAR.exe" a -r -ep1 "output\WinFormsApp.rar" "publish\*"
+    
+          echo "Checking RAR integrity..."
+          & "C:\Program Files\WinRAR\WinRAR.exe" t "output\WinFormsApp.rar"
+
+          echo "Packaging completed successfully."
+        shell: powershell
+
+
+      - name: Verify RAR Contents
+        run: |
+          & "C:\Program Files\WinRAR\WinRAR.exe" l output/WinFormsApp.rar
         shell: powershell
 
       - name: Create GitHub Release
@@ -40,4 +57,4 @@ jobs:
         with:
           files: output/WinFormsApp.rar
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
