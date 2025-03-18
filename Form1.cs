@@ -351,13 +351,23 @@ namespace LostKit
                     LoadHiscoreSkill(skillRecord);
                 }
 
-                SetCombatLevelHiScore(GetCombatLevel(skillRecords[(int)SkillType.Attack].Level,
-                    skillRecords[(int)SkillType.Strength].Level,
-                    skillRecords[(int)SkillType.Hitpoints].Level,
-                    skillRecords[(int)SkillType.Defence].Level,
-                    skillRecords[(int)SkillType.Ranged].Level,
-                    skillRecords[(int)SkillType.Magic].Level,
-                    skillRecords[(int)SkillType.Prayer].Level));
+                var attackLevel = skillRecords.Find(x => x.Type.Equals(SkillType.Attack))?.Level;
+                var strengthLevel = skillRecords.Find(x => x.Type.Equals(SkillType.Strength))?.Level;
+                var hitpointsLevel = skillRecords.Find(x => x.Type.Equals(SkillType.Hitpoints))?.Level;
+                var defenceLevel = skillRecords.Find(x => x.Type.Equals(SkillType.Defence))?.Level;
+                var rangedLevel = skillRecords.Find(x => x.Type.Equals(SkillType.Ranged))?.Level;
+                var magicLevel = skillRecords.Find(x => x.Type.Equals(SkillType.Magic))?.Level;
+                var prayerLevel = skillRecords.Find(x => x.Type.Equals(SkillType.Prayer))?.Level;
+
+                SetCombatLevelHiScore(GetCombatLevel(
+                    attackLevel ?? 1, 
+                    strengthLevel ?? 1, 
+                    hitpointsLevel ?? 1, 
+                    defenceLevel ?? 1, 
+                    rangedLevel ?? 1, 
+                    magicLevel ?? 1, 
+                    prayerLevel ?? 1
+                ));
             }
 
             LoadAdventureLog(searchName);
