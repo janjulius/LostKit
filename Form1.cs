@@ -494,10 +494,10 @@ namespace LostKit
 
         private double GetCombatLevel(int attack, int strength, int hitpoints, int defense, int ranged, int magic, int prayer)
         {
-            int base_lvl = Convert.ToInt32(prayer / 2 - 0.5 + hitpoints + defense) / 4;
-            int melee = Convert.ToInt32((attack + strength) * 0.325);
-            int range = Convert.ToInt32((ranged * 1.5 - 0.5) * 0.325);
-            int mage = Convert.ToInt32((magic * 1.5 - 0.5) * 0.325);
+            double base_lvl = Convert.ToInt32(prayer / 2 - 0.5 + hitpoints + defense) / 4;
+            double melee = Convert.ToInt32((attack + strength) * 0.325);
+            double range = Convert.ToInt32((ranged * 1.5 - 0.5) * 0.325);
+            double mage = Convert.ToInt32((magic * 1.5 - 0.5) * 0.325);
 
             if (range > melee || mage > melee)
             {
