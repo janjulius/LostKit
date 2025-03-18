@@ -23,7 +23,7 @@ jobs:
 
       - name: Build and Publish Project
         run: |
-          dotnet publish -c Release -r win-x64 --self-contained true -p:EnableCompressionInSingleFile=true -p:ExcludeNativeLibrariesForSelfExtract=true --output ./publish
+          dotnet publish -c Release -r win-x64 --no-self-contained -p:EnableCompressionInSingleFile=true -p:ExcludeNativeLibrariesForSelfExtract=true --output ./publish
           
       - name: Verify Published Files
         run: |
