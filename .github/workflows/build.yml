@@ -28,7 +28,7 @@ jobs:
       - name: Verify Published Files
         run: |
           echo "Listing all files in the publish directory:"
-          dir ./publish /s
+          Get-ChildItem -Path "./publish" -Recurse -ErrorAction Stop | Format-Table FullName, Length -AutoSize
         shell: powershell
 
       - name: Install WinRAR
