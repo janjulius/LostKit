@@ -38,9 +38,14 @@ jobs:
       - name: Package Entire Publish Folder as RAR
         run: |
           mkdir output
-          & "C:\Program Files\WinRAR\WinRAR.exe" a -r -ep1 output/WinFormsApp.rar "publish\*"
+          & "C:\Program Files\WinRAR\WinRAR.exe" a -r -ep1 "output\WinFormsApp.rar" "publish\*"
+    
+          echo "Checking RAR integrity..."
+          & "C:\Program Files\WinRAR\WinRAR.exe" t "output\WinFormsApp.rar"
+
           echo "Packaging completed successfully."
         shell: powershell
+
 
       - name: Verify RAR Contents
         run: |
