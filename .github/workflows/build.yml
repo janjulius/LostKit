@@ -36,7 +36,9 @@ jobs:
         shell: powershell
 
       - name: Build Installer with Inno Setup
-        run: iscc setup.iss
+        run: |
+          iscc setup.iss
+          echo "Installer created successfully."
         shell: powershell
 
       - name: Install WinRAR
@@ -44,28 +46,35 @@ jobs:
           choco install winrar -y
         shell: powershell
 
-      - name: Package Entire Publish Folder as RAR
+      - name: Package Entire Publish Folder as ZIP
         run: |
           mkdir output
           & "C:\Program Files\WinRAR\WinRAR.exe" a -r -ep1 "output\WinFormsApp.zip" "publish\*"
     
-          echo "Checking RAR integrity..."
+          echo "Checking ZIP integrity..."
           & "C:\Program Files\WinRAR\WinRAR.exe" t "output\WinFormsApp.zip"
 
           echo "Packaging completed successfully."
         shell: powershell
 
-
-      - name: Verify RAR Contents
+      - name: Move MSI Installer to Output
         run: |
-          & "C:\Program Files\WinRAR\WinRAR.exe" l output/WinFormsApp.zip
+          Get-ChildItem -Path . -Filter "*.msi" -Recurse | ForEach-Object {
+            Move-Item $_.FullName -Destination output/
+          }
         shell: powershell
 
-
+      - name: Verify Output Files
+        run: |
+          echo "Contents of output folder:"
+          Get-ChildItem -Path "./output" -Recurse | Format-Table FullName, Length -AutoSize
+        shell: powershell
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: output/WinFormsApp.zip
+          files: |
+            output/WinFormsApp.zip
+            output/*.msi
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
