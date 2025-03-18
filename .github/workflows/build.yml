@@ -24,14 +24,7 @@ jobs:
       - name: Build and Publish Project
         run: |
           dotnet publish -c Release -r win-x64 --self-contained true -p:EnableCompressionInSingleFile=true -p:ExcludeNativeLibrariesForSelfExtract=true --output ./publish
-
-      - name: Debug Publish Folder
-        run: |
-          echo "Listing contents of the publish folder..."
-          dir ./publish /s
-        shell: powershell
-
-
+          
       - name: Verify Published Files
         run: |
           echo "Listing all files in the publish directory:"
