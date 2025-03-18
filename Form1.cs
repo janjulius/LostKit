@@ -119,7 +119,7 @@ namespace LostKit
 
             webView.Source = new Uri($"https://2004.lostcity.rs/client?world={settings.FavWorld}&detail={settings.FavDetailSettings.ToString().ToLower()}&method=0");
             webView.EnsureCoreWebView2Async();
-            SetTitle($"LostKit (World {settings.FavWorld})");
+            SetTitle($"LostKit (World {settings.FavWorld}) (Detail mode: {settings.FavDetailSettings.ToString()})");
             webView.NavigationCompleted += (s, e) => RemoveGameFrameTop();
         }
 
@@ -361,7 +361,7 @@ namespace LostKit
             settings = Settings.Load();
             webView.Source = new Uri($"https://2004.lostcity.rs/client?world={world.WorldId}&detail={settings.FavDetailSettings.ToString().ToLower()}&method=0");
             webView.EnsureCoreWebView2Async();
-            SetTitle($"LostKit (World {world.WorldId})");
+            SetTitle($"LostKit (World {world.WorldId}) (Detail mode: {settings.FavDetailSettings.ToString()})");
         }
 
         private void LoadHighscoreTab()
