@@ -13,6 +13,12 @@ Current functions:
 * Notes
 * True oldschool feel
 
+___
+
+* Preferences window (can be accessed by going to the top of the client with your cursor)
+    - Favorite world
+    - Prefered detail setting
+
 ![alt text](image-1.png)
 ![alt text](image-2.png)
 ![alt text](image-3.png)
