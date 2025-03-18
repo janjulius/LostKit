@@ -48,7 +48,7 @@ jobs:
 
       - name: Package Entire Publish Folder as ZIP
         run: |
-          mkdir output
+          if (!(Test-Path -Path "output")) { mkdir output }
           & "C:\Program Files\WinRAR\WinRAR.exe" a -r -ep1 "output\WinFormsApp.zip" "publish\*"
     
           echo "Checking ZIP integrity..."
