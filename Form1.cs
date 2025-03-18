@@ -18,9 +18,11 @@ namespace LostKit
 
         private string notesFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "NotesApp", "notes.txt");
 
+        private Settings settings;
 
         public Form1()
         {
+            settings = Settings.Load();
             Directory.CreateDirectory(Path.GetDirectoryName(notesFilePath));
             InitializeComponent();
             LoadWorldData();
@@ -30,7 +32,27 @@ namespace LostKit
             RenderMapPage();
             LoadNotes();
             SkillLabel_MouseLeave(null, null);
+            menuStrip1.Visible = false;
+
             this.FormClosing += Application_FormClosing;
+        }
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Y <= 1)
+            {
+                if (!menuStrip1.Visible)
+                {
+                    menuStrip1.Visible = true;
+                    menuStrip1.BringToFront();
+                }
+            }
+            else
+            {
+                if (menuStrip1.Visible)
+                {
+                    menuStrip1.Visible = false;
+                }
+            }
         }
 
         private void Application_FormClosing(object? sender, FormClosingEventArgs e)
@@ -95,9 +117,9 @@ namespace LostKit
             };
             this.Controls.Add(webView);
 
-            webView.Source = new Uri($"https://2004.lostcity.rs/client?world={Settings.FavWorld}&detail={Settings.FavDetailSettings.ToString().ToLower()}&method=0");
+            webView.Source = new Uri($"https://2004.lostcity.rs/client?world={settings.FavWorld}&detail={settings.FavDetailSettings.ToString().ToLower()}&method=0");
             webView.EnsureCoreWebView2Async();
-            SetTitle($"LostKit (World {Settings.FavWorld})");
+            SetTitle($"LostKit (World {settings.FavWorld})");
             webView.NavigationCompleted += (s, e) => RemoveGameFrameTop();
         }
 
@@ -336,7 +358,8 @@ namespace LostKit
 
         private void OnWorldDoubleClick(WorldData world)
         {
-            webView.Source = new Uri($"https://2004.lostcity.rs/client?world={world.WorldId}&detail={Settings.FavDetailSettings.ToString().ToLower()}&method=0");
+            settings = Settings.Load();
+            webView.Source = new Uri($"https://2004.lostcity.rs/client?world={world.WorldId}&detail={settings.FavDetailSettings.ToString().ToLower()}&method=0");
             webView.EnsureCoreWebView2Async();
             SetTitle($"LostKit (World {world.WorldId})");
         }
@@ -367,12 +390,12 @@ namespace LostKit
                 var prayerLevel = skillRecords.Find(x => x.Type.Equals(SkillType.Prayer))?.Level;
 
                 SetCombatLevelHiScore(GetCombatLevel(
-                    attackLevel ?? 1, 
-                    strengthLevel ?? 1, 
-                    hitpointsLevel ?? 1, 
-                    defenceLevel ?? 1, 
-                    rangedLevel ?? 1, 
-                    magicLevel ?? 1, 
+                    attackLevel ?? 1,
+                    strengthLevel ?? 1,
+                    hitpointsLevel ?? 1,
+                    defenceLevel ?? 1,
+                    rangedLevel ?? 1,
+                    magicLevel ?? 1,
                     prayerLevel ?? 1
                 ));
             }
@@ -524,12 +547,18 @@ namespace LostKit
             }
 
             return base_lvl + melee;
-            
+
         }
 
         private void SetTitle(string title)
         {
             this.Text = title;
+        }
+
+        private void preferencesToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
+        {
+            PreferencesForm pForm = new PreferencesForm();
+            pForm.ShowDialog();
         }
     }
 }
