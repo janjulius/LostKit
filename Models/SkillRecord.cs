@@ -14,6 +14,7 @@ namespace LostKit.Models
         public double Value { get; set; }  // Divided by 10
         public DateTime Date { get; set; }
         public int Rank { get; set; }
+        public int NextLevelExp { get; internal set; }
 
         public SkillRecord(int type, int level, int value, string date, int rank)
         {

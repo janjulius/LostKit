@@ -34,6 +34,7 @@ namespace LostKit
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             TabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            SkillExtraInfoBox = new RichTextBox();
             HiscoreSearchButton = new Button();
             richTextBox1 = new RichTextBox();
             HiscoresRunecraft = new Label();
@@ -130,7 +131,8 @@ namespace LostKit
             // 
             // tabPage1
             // 
-            tabPage1.BackColor = Color.DimGray;
+            tabPage1.BackColor = Color.FromArgb(64, 64, 64);
+            tabPage1.Controls.Add(SkillExtraInfoBox);
             tabPage1.Controls.Add(HiscoreSearchButton);
             tabPage1.Controls.Add(richTextBox1);
             tabPage1.Controls.Add(HiscoresRunecraft);
@@ -183,6 +185,18 @@ namespace LostKit
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Hiscores";
             // 
+            // SkillExtraInfoBox
+            // 
+            SkillExtraInfoBox.BackColor = Color.FromArgb(64, 64, 64);
+            SkillExtraInfoBox.BorderStyle = BorderStyle.None;
+            SkillExtraInfoBox.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            SkillExtraInfoBox.ForeColor = SystemColors.ControlDarkDark;
+            SkillExtraInfoBox.Location = new Point(221, 109);
+            SkillExtraInfoBox.Name = "SkillExtraInfoBox";
+            SkillExtraInfoBox.Size = new Size(115, 246);
+            SkillExtraInfoBox.TabIndex = 46;
+            SkillExtraInfoBox.Text = "";
+            // 
             // HiscoreSearchButton
             // 
             HiscoreSearchButton.Location = new Point(171, 18);
@@ -195,18 +209,20 @@ namespace LostKit
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(3, 426);
+            richTextBox1.Location = new Point(3, 448);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(327, 120);
+            richTextBox1.Size = new Size(327, 98);
             richTextBox1.TabIndex = 44;
             richTextBox1.Text = "";
             // 
             // HiscoresRunecraft
             // 
             HiscoresRunecraft.AutoSize = true;
-            HiscoresRunecraft.Location = new Point(62, 394);
+            HiscoresRunecraft.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiscoresRunecraft.ForeColor = SystemColors.ControlDark;
+            HiscoresRunecraft.Location = new Point(62, 371);
             HiscoresRunecraft.Name = "HiscoresRunecraft";
-            HiscoresRunecraft.Size = new Size(12, 15);
+            HiscoresRunecraft.Size = new Size(15, 19);
             HiscoresRunecraft.TabIndex = 43;
             HiscoresRunecraft.Text = "-";
             // 
@@ -215,7 +231,7 @@ namespace LostKit
             pictureBox21.BackgroundImage = (Image)resources.GetObject("pictureBox21.BackgroundImage");
             pictureBox21.BackgroundImageLayout = ImageLayout.Center;
             pictureBox21.InitialImage = (Image)resources.GetObject("pictureBox21.InitialImage");
-            pictureBox21.Location = new Point(21, 384);
+            pictureBox21.Location = new Point(21, 361);
             pictureBox21.Name = "pictureBox21";
             pictureBox21.Size = new Size(35, 36);
             pictureBox21.TabIndex = 42;
@@ -224,9 +240,11 @@ namespace LostKit
             // HiscoresWoodcutting
             // 
             HiscoresWoodcutting.AutoSize = true;
-            HiscoresWoodcutting.Location = new Point(191, 352);
+            HiscoresWoodcutting.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiscoresWoodcutting.ForeColor = SystemColors.ControlDark;
+            HiscoresWoodcutting.Location = new Point(194, 329);
             HiscoresWoodcutting.Name = "HiscoresWoodcutting";
-            HiscoresWoodcutting.Size = new Size(12, 15);
+            HiscoresWoodcutting.Size = new Size(15, 19);
             HiscoresWoodcutting.TabIndex = 41;
             HiscoresWoodcutting.Text = "-";
             // 
@@ -235,7 +253,7 @@ namespace LostKit
             pictureBox20.BackgroundImage = (Image)resources.GetObject("pictureBox20.BackgroundImage");
             pictureBox20.BackgroundImageLayout = ImageLayout.Center;
             pictureBox20.InitialImage = (Image)resources.GetObject("pictureBox20.InitialImage");
-            pictureBox20.Location = new Point(150, 342);
+            pictureBox20.Location = new Point(153, 319);
             pictureBox20.Name = "pictureBox20";
             pictureBox20.Size = new Size(35, 36);
             pictureBox20.TabIndex = 40;
@@ -244,9 +262,11 @@ namespace LostKit
             // HiscoresFletching
             // 
             HiscoresFletching.AutoSize = true;
-            HiscoresFletching.Location = new Point(130, 352);
+            HiscoresFletching.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiscoresFletching.ForeColor = SystemColors.ControlDark;
+            HiscoresFletching.Location = new Point(130, 329);
             HiscoresFletching.Name = "HiscoresFletching";
-            HiscoresFletching.Size = new Size(12, 15);
+            HiscoresFletching.Size = new Size(15, 19);
             HiscoresFletching.TabIndex = 39;
             HiscoresFletching.Text = "-";
             // 
@@ -255,7 +275,7 @@ namespace LostKit
             pictureBox19.BackgroundImage = (Image)resources.GetObject("pictureBox19.BackgroundImage");
             pictureBox19.BackgroundImageLayout = ImageLayout.Center;
             pictureBox19.InitialImage = (Image)resources.GetObject("pictureBox19.InitialImage");
-            pictureBox19.Location = new Point(89, 342);
+            pictureBox19.Location = new Point(89, 319);
             pictureBox19.Name = "pictureBox19";
             pictureBox19.Size = new Size(35, 36);
             pictureBox19.TabIndex = 38;
@@ -264,9 +284,11 @@ namespace LostKit
             // HiscoresMagic
             // 
             HiscoresMagic.AutoSize = true;
-            HiscoresMagic.Location = new Point(62, 352);
+            HiscoresMagic.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiscoresMagic.ForeColor = SystemColors.ControlDark;
+            HiscoresMagic.Location = new Point(62, 329);
             HiscoresMagic.Name = "HiscoresMagic";
-            HiscoresMagic.Size = new Size(12, 15);
+            HiscoresMagic.Size = new Size(15, 19);
             HiscoresMagic.TabIndex = 37;
             HiscoresMagic.Text = "-";
             // 
@@ -275,7 +297,7 @@ namespace LostKit
             pictureBox18.BackgroundImage = (Image)resources.GetObject("pictureBox18.BackgroundImage");
             pictureBox18.BackgroundImageLayout = ImageLayout.Center;
             pictureBox18.InitialImage = (Image)resources.GetObject("pictureBox18.InitialImage");
-            pictureBox18.Location = new Point(21, 342);
+            pictureBox18.Location = new Point(21, 319);
             pictureBox18.Name = "pictureBox18";
             pictureBox18.Size = new Size(35, 36);
             pictureBox18.TabIndex = 36;
@@ -284,9 +306,11 @@ namespace LostKit
             // HiscoresFiremaking
             // 
             HiscoresFiremaking.AutoSize = true;
-            HiscoresFiremaking.Location = new Point(191, 310);
+            HiscoresFiremaking.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiscoresFiremaking.ForeColor = SystemColors.ControlDark;
+            HiscoresFiremaking.Location = new Point(194, 287);
             HiscoresFiremaking.Name = "HiscoresFiremaking";
-            HiscoresFiremaking.Size = new Size(12, 15);
+            HiscoresFiremaking.Size = new Size(15, 19);
             HiscoresFiremaking.TabIndex = 35;
             HiscoresFiremaking.Text = "-";
             // 
@@ -295,7 +319,7 @@ namespace LostKit
             pictureBox17.BackgroundImage = (Image)resources.GetObject("pictureBox17.BackgroundImage");
             pictureBox17.BackgroundImageLayout = ImageLayout.Center;
             pictureBox17.InitialImage = (Image)resources.GetObject("pictureBox17.InitialImage");
-            pictureBox17.Location = new Point(150, 300);
+            pictureBox17.Location = new Point(153, 277);
             pictureBox17.Name = "pictureBox17";
             pictureBox17.Size = new Size(35, 36);
             pictureBox17.TabIndex = 34;
@@ -304,9 +328,11 @@ namespace LostKit
             // HiscoresCrafting
             // 
             HiscoresCrafting.AutoSize = true;
-            HiscoresCrafting.Location = new Point(130, 310);
+            HiscoresCrafting.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiscoresCrafting.ForeColor = SystemColors.ControlDark;
+            HiscoresCrafting.Location = new Point(130, 287);
             HiscoresCrafting.Name = "HiscoresCrafting";
-            HiscoresCrafting.Size = new Size(12, 15);
+            HiscoresCrafting.Size = new Size(15, 19);
             HiscoresCrafting.TabIndex = 33;
             HiscoresCrafting.Text = "-";
             // 
@@ -315,7 +341,7 @@ namespace LostKit
             pictureBox16.BackgroundImage = (Image)resources.GetObject("pictureBox16.BackgroundImage");
             pictureBox16.BackgroundImageLayout = ImageLayout.Center;
             pictureBox16.InitialImage = (Image)resources.GetObject("pictureBox16.InitialImage");
-            pictureBox16.Location = new Point(89, 300);
+            pictureBox16.Location = new Point(89, 277);
             pictureBox16.Name = "pictureBox16";
             pictureBox16.Size = new Size(35, 36);
             pictureBox16.TabIndex = 32;
@@ -324,9 +350,11 @@ namespace LostKit
             // HiscoresPrayer
             // 
             HiscoresPrayer.AutoSize = true;
-            HiscoresPrayer.Location = new Point(62, 310);
+            HiscoresPrayer.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiscoresPrayer.ForeColor = SystemColors.ControlDark;
+            HiscoresPrayer.Location = new Point(62, 287);
             HiscoresPrayer.Name = "HiscoresPrayer";
-            HiscoresPrayer.Size = new Size(12, 15);
+            HiscoresPrayer.Size = new Size(15, 19);
             HiscoresPrayer.TabIndex = 31;
             HiscoresPrayer.Text = "-";
             // 
@@ -335,7 +363,7 @@ namespace LostKit
             pictureBox15.BackgroundImage = (Image)resources.GetObject("pictureBox15.BackgroundImage");
             pictureBox15.BackgroundImageLayout = ImageLayout.Center;
             pictureBox15.InitialImage = (Image)resources.GetObject("pictureBox15.InitialImage");
-            pictureBox15.Location = new Point(21, 300);
+            pictureBox15.Location = new Point(21, 277);
             pictureBox15.Name = "pictureBox15";
             pictureBox15.Size = new Size(35, 36);
             pictureBox15.TabIndex = 30;
@@ -344,9 +372,11 @@ namespace LostKit
             // HiscoresCooking
             // 
             HiscoresCooking.AutoSize = true;
-            HiscoresCooking.Location = new Point(191, 268);
+            HiscoresCooking.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiscoresCooking.ForeColor = SystemColors.ControlDark;
+            HiscoresCooking.Location = new Point(194, 245);
             HiscoresCooking.Name = "HiscoresCooking";
-            HiscoresCooking.Size = new Size(12, 15);
+            HiscoresCooking.Size = new Size(15, 19);
             HiscoresCooking.TabIndex = 29;
             HiscoresCooking.Text = "-";
             // 
@@ -355,7 +385,7 @@ namespace LostKit
             pictureBox14.BackgroundImage = (Image)resources.GetObject("pictureBox14.BackgroundImage");
             pictureBox14.BackgroundImageLayout = ImageLayout.Center;
             pictureBox14.InitialImage = (Image)resources.GetObject("pictureBox14.InitialImage");
-            pictureBox14.Location = new Point(150, 258);
+            pictureBox14.Location = new Point(153, 235);
             pictureBox14.Name = "pictureBox14";
             pictureBox14.Size = new Size(35, 36);
             pictureBox14.TabIndex = 28;
@@ -364,9 +394,11 @@ namespace LostKit
             // HiscoresThieving
             // 
             HiscoresThieving.AutoSize = true;
-            HiscoresThieving.Location = new Point(130, 268);
+            HiscoresThieving.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiscoresThieving.ForeColor = SystemColors.ControlDark;
+            HiscoresThieving.Location = new Point(130, 245);
             HiscoresThieving.Name = "HiscoresThieving";
-            HiscoresThieving.Size = new Size(12, 15);
+            HiscoresThieving.Size = new Size(15, 19);
             HiscoresThieving.TabIndex = 27;
             HiscoresThieving.Text = "-";
             // 
@@ -375,7 +407,7 @@ namespace LostKit
             pictureBox13.BackgroundImage = (Image)resources.GetObject("pictureBox13.BackgroundImage");
             pictureBox13.BackgroundImageLayout = ImageLayout.Center;
             pictureBox13.InitialImage = (Image)resources.GetObject("pictureBox13.InitialImage");
-            pictureBox13.Location = new Point(89, 258);
+            pictureBox13.Location = new Point(89, 235);
             pictureBox13.Name = "pictureBox13";
             pictureBox13.Size = new Size(35, 36);
             pictureBox13.TabIndex = 26;
@@ -384,9 +416,11 @@ namespace LostKit
             // HiscoresRanged
             // 
             HiscoresRanged.AutoSize = true;
-            HiscoresRanged.Location = new Point(62, 268);
+            HiscoresRanged.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiscoresRanged.ForeColor = SystemColors.ControlDark;
+            HiscoresRanged.Location = new Point(62, 245);
             HiscoresRanged.Name = "HiscoresRanged";
-            HiscoresRanged.Size = new Size(12, 15);
+            HiscoresRanged.Size = new Size(15, 19);
             HiscoresRanged.TabIndex = 25;
             HiscoresRanged.Text = "-";
             // 
@@ -395,7 +429,7 @@ namespace LostKit
             pictureBox12.BackgroundImage = (Image)resources.GetObject("pictureBox12.BackgroundImage");
             pictureBox12.BackgroundImageLayout = ImageLayout.Center;
             pictureBox12.InitialImage = (Image)resources.GetObject("pictureBox12.InitialImage");
-            pictureBox12.Location = new Point(21, 258);
+            pictureBox12.Location = new Point(21, 235);
             pictureBox12.Name = "pictureBox12";
             pictureBox12.Size = new Size(35, 36);
             pictureBox12.TabIndex = 24;
@@ -404,9 +438,11 @@ namespace LostKit
             // HiscoresFishing
             // 
             HiscoresFishing.AutoSize = true;
-            HiscoresFishing.Location = new Point(191, 226);
+            HiscoresFishing.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiscoresFishing.ForeColor = SystemColors.ControlDark;
+            HiscoresFishing.Location = new Point(194, 203);
             HiscoresFishing.Name = "HiscoresFishing";
-            HiscoresFishing.Size = new Size(12, 15);
+            HiscoresFishing.Size = new Size(15, 19);
             HiscoresFishing.TabIndex = 23;
             HiscoresFishing.Text = "-";
             // 
@@ -415,7 +451,7 @@ namespace LostKit
             pictureBox11.BackgroundImage = (Image)resources.GetObject("pictureBox11.BackgroundImage");
             pictureBox11.BackgroundImageLayout = ImageLayout.Center;
             pictureBox11.InitialImage = (Image)resources.GetObject("pictureBox11.InitialImage");
-            pictureBox11.Location = new Point(150, 216);
+            pictureBox11.Location = new Point(153, 193);
             pictureBox11.Name = "pictureBox11";
             pictureBox11.Size = new Size(35, 36);
             pictureBox11.TabIndex = 22;
@@ -424,9 +460,11 @@ namespace LostKit
             // HiscoresHerblore
             // 
             HiscoresHerblore.AutoSize = true;
-            HiscoresHerblore.Location = new Point(130, 226);
+            HiscoresHerblore.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiscoresHerblore.ForeColor = SystemColors.ControlDark;
+            HiscoresHerblore.Location = new Point(130, 203);
             HiscoresHerblore.Name = "HiscoresHerblore";
-            HiscoresHerblore.Size = new Size(12, 15);
+            HiscoresHerblore.Size = new Size(15, 19);
             HiscoresHerblore.TabIndex = 21;
             HiscoresHerblore.Text = "-";
             // 
@@ -435,7 +473,7 @@ namespace LostKit
             pictureBox10.BackgroundImage = (Image)resources.GetObject("pictureBox10.BackgroundImage");
             pictureBox10.BackgroundImageLayout = ImageLayout.Center;
             pictureBox10.InitialImage = (Image)resources.GetObject("pictureBox10.InitialImage");
-            pictureBox10.Location = new Point(89, 216);
+            pictureBox10.Location = new Point(89, 193);
             pictureBox10.Name = "pictureBox10";
             pictureBox10.Size = new Size(35, 36);
             pictureBox10.TabIndex = 20;
@@ -444,9 +482,11 @@ namespace LostKit
             // HiscoresDefense
             // 
             HiscoresDefense.AutoSize = true;
-            HiscoresDefense.Location = new Point(62, 226);
+            HiscoresDefense.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiscoresDefense.ForeColor = SystemColors.ControlDark;
+            HiscoresDefense.Location = new Point(62, 203);
             HiscoresDefense.Name = "HiscoresDefense";
-            HiscoresDefense.Size = new Size(12, 15);
+            HiscoresDefense.Size = new Size(15, 19);
             HiscoresDefense.TabIndex = 19;
             HiscoresDefense.Text = "-";
             // 
@@ -455,7 +495,7 @@ namespace LostKit
             pictureBox9.BackgroundImage = (Image)resources.GetObject("pictureBox9.BackgroundImage");
             pictureBox9.BackgroundImageLayout = ImageLayout.Center;
             pictureBox9.InitialImage = (Image)resources.GetObject("pictureBox9.InitialImage");
-            pictureBox9.Location = new Point(21, 216);
+            pictureBox9.Location = new Point(21, 193);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(35, 36);
             pictureBox9.TabIndex = 18;
@@ -464,9 +504,11 @@ namespace LostKit
             // HiscoresSmithing
             // 
             HiscoresSmithing.AutoSize = true;
-            HiscoresSmithing.Location = new Point(191, 184);
+            HiscoresSmithing.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiscoresSmithing.ForeColor = SystemColors.ControlDark;
+            HiscoresSmithing.Location = new Point(194, 161);
             HiscoresSmithing.Name = "HiscoresSmithing";
-            HiscoresSmithing.Size = new Size(12, 15);
+            HiscoresSmithing.Size = new Size(15, 19);
             HiscoresSmithing.TabIndex = 17;
             HiscoresSmithing.Text = "-";
             // 
@@ -475,7 +517,7 @@ namespace LostKit
             pictureBox8.BackgroundImage = (Image)resources.GetObject("pictureBox8.BackgroundImage");
             pictureBox8.BackgroundImageLayout = ImageLayout.Center;
             pictureBox8.InitialImage = (Image)resources.GetObject("pictureBox8.InitialImage");
-            pictureBox8.Location = new Point(150, 174);
+            pictureBox8.Location = new Point(153, 151);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(35, 36);
             pictureBox8.TabIndex = 16;
@@ -484,9 +526,11 @@ namespace LostKit
             // HiscoresAgility
             // 
             HiscoresAgility.AutoSize = true;
-            HiscoresAgility.Location = new Point(130, 184);
+            HiscoresAgility.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiscoresAgility.ForeColor = SystemColors.ControlDark;
+            HiscoresAgility.Location = new Point(130, 161);
             HiscoresAgility.Name = "HiscoresAgility";
-            HiscoresAgility.Size = new Size(12, 15);
+            HiscoresAgility.Size = new Size(15, 19);
             HiscoresAgility.TabIndex = 15;
             HiscoresAgility.Text = "-";
             // 
@@ -495,7 +539,7 @@ namespace LostKit
             pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
             pictureBox7.BackgroundImageLayout = ImageLayout.Center;
             pictureBox7.InitialImage = (Image)resources.GetObject("pictureBox7.InitialImage");
-            pictureBox7.Location = new Point(89, 174);
+            pictureBox7.Location = new Point(89, 151);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(35, 36);
             pictureBox7.TabIndex = 14;
@@ -504,9 +548,11 @@ namespace LostKit
             // HiscoresStrength
             // 
             HiscoresStrength.AutoSize = true;
-            HiscoresStrength.Location = new Point(62, 184);
+            HiscoresStrength.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiscoresStrength.ForeColor = SystemColors.ControlDark;
+            HiscoresStrength.Location = new Point(62, 161);
             HiscoresStrength.Name = "HiscoresStrength";
-            HiscoresStrength.Size = new Size(12, 15);
+            HiscoresStrength.Size = new Size(15, 19);
             HiscoresStrength.TabIndex = 13;
             HiscoresStrength.Text = "-";
             // 
@@ -515,7 +561,7 @@ namespace LostKit
             pictureBox6.BackgroundImage = (Image)resources.GetObject("pictureBox6.BackgroundImage");
             pictureBox6.BackgroundImageLayout = ImageLayout.Center;
             pictureBox6.InitialImage = (Image)resources.GetObject("pictureBox6.InitialImage");
-            pictureBox6.Location = new Point(21, 174);
+            pictureBox6.Location = new Point(21, 151);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(35, 36);
             pictureBox6.TabIndex = 12;
@@ -524,9 +570,11 @@ namespace LostKit
             // HiscoresMining
             // 
             HiscoresMining.AutoSize = true;
-            HiscoresMining.Location = new Point(191, 142);
+            HiscoresMining.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiscoresMining.ForeColor = SystemColors.ControlDark;
+            HiscoresMining.Location = new Point(194, 119);
             HiscoresMining.Name = "HiscoresMining";
-            HiscoresMining.Size = new Size(12, 15);
+            HiscoresMining.Size = new Size(15, 19);
             HiscoresMining.TabIndex = 11;
             HiscoresMining.Text = "-";
             // 
@@ -535,7 +583,7 @@ namespace LostKit
             pictureBox5.BackgroundImage = (Image)resources.GetObject("pictureBox5.BackgroundImage");
             pictureBox5.BackgroundImageLayout = ImageLayout.Center;
             pictureBox5.InitialImage = (Image)resources.GetObject("pictureBox5.InitialImage");
-            pictureBox5.Location = new Point(150, 132);
+            pictureBox5.Location = new Point(153, 109);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(35, 36);
             pictureBox5.TabIndex = 10;
@@ -544,9 +592,11 @@ namespace LostKit
             // HiscoresHitpoints
             // 
             HiscoresHitpoints.AutoSize = true;
-            HiscoresHitpoints.Location = new Point(130, 142);
+            HiscoresHitpoints.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiscoresHitpoints.ForeColor = SystemColors.ControlDark;
+            HiscoresHitpoints.Location = new Point(130, 119);
             HiscoresHitpoints.Name = "HiscoresHitpoints";
-            HiscoresHitpoints.Size = new Size(12, 15);
+            HiscoresHitpoints.Size = new Size(15, 19);
             HiscoresHitpoints.TabIndex = 9;
             HiscoresHitpoints.Text = "-";
             // 
@@ -555,7 +605,7 @@ namespace LostKit
             pictureBox4.BackgroundImage = (Image)resources.GetObject("pictureBox4.BackgroundImage");
             pictureBox4.BackgroundImageLayout = ImageLayout.Center;
             pictureBox4.InitialImage = (Image)resources.GetObject("pictureBox4.InitialImage");
-            pictureBox4.Location = new Point(89, 132);
+            pictureBox4.Location = new Point(89, 109);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(35, 36);
             pictureBox4.TabIndex = 8;
@@ -564,9 +614,11 @@ namespace LostKit
             // HiscoreAttack
             // 
             HiscoreAttack.AutoSize = true;
-            HiscoreAttack.Location = new Point(62, 142);
+            HiscoreAttack.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiscoreAttack.ForeColor = SystemColors.ControlDark;
+            HiscoreAttack.Location = new Point(62, 119);
             HiscoreAttack.Name = "HiscoreAttack";
-            HiscoreAttack.Size = new Size(12, 15);
+            HiscoreAttack.Size = new Size(15, 19);
             HiscoreAttack.TabIndex = 7;
             HiscoreAttack.Text = "-";
             // 
@@ -575,7 +627,7 @@ namespace LostKit
             pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
             pictureBox3.BackgroundImageLayout = ImageLayout.Center;
             pictureBox3.InitialImage = (Image)resources.GetObject("pictureBox3.InitialImage");
-            pictureBox3.Location = new Point(21, 132);
+            pictureBox3.Location = new Point(21, 109);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(35, 36);
             pictureBox3.TabIndex = 6;
@@ -584,9 +636,11 @@ namespace LostKit
             // HiScoreCombat
             // 
             HiScoreCombat.AutoSize = true;
-            HiScoreCombat.Location = new Point(173, 80);
+            HiScoreCombat.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiScoreCombat.ForeColor = SystemColors.ControlDark;
+            HiScoreCombat.Location = new Point(173, 57);
             HiScoreCombat.Name = "HiScoreCombat";
-            HiScoreCombat.Size = new Size(12, 15);
+            HiScoreCombat.Size = new Size(15, 19);
             HiScoreCombat.TabIndex = 5;
             HiScoreCombat.Text = "-";
             // 
@@ -595,7 +649,7 @@ namespace LostKit
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
             pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
-            pictureBox2.Location = new Point(132, 70);
+            pictureBox2.Location = new Point(132, 47);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(35, 36);
             pictureBox2.TabIndex = 4;
@@ -604,9 +658,11 @@ namespace LostKit
             // HiScoreOverall
             // 
             HiScoreOverall.AutoSize = true;
-            HiScoreOverall.Location = new Point(62, 80);
+            HiScoreOverall.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            HiScoreOverall.ForeColor = SystemColors.ControlDark;
+            HiScoreOverall.Location = new Point(62, 57);
             HiScoreOverall.Name = "HiScoreOverall";
-            HiScoreOverall.Size = new Size(12, 15);
+            HiScoreOverall.Size = new Size(15, 19);
             HiScoreOverall.TabIndex = 3;
             HiScoreOverall.Text = "-";
             // 
@@ -615,7 +671,7 @@ namespace LostKit
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Center;
             pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
-            pictureBox1.Location = new Point(21, 70);
+            pictureBox1.Location = new Point(21, 47);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(35, 36);
             pictureBox1.TabIndex = 2;
@@ -641,6 +697,8 @@ namespace LostKit
             // 
             // NotesTextBox
             // 
+            NotesTextBox.BackColor = Color.FromArgb(64, 64, 64);
+            NotesTextBox.ForeColor = SystemColors.Menu;
             NotesTextBox.Location = new Point(3, 3);
             NotesTextBox.Name = "NotesTextBox";
             NotesTextBox.Size = new Size(327, 540);
@@ -789,5 +847,6 @@ namespace LostKit
         private Microsoft.Web.WebView2.WinForms.WebView2 webView23;
         private RichTextBox NotesTextBox;
         private Button HiscoreSearchButton;
+        private RichTextBox SkillExtraInfoBox;
     }
 }

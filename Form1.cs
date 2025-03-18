@@ -3,6 +3,7 @@ using LostKit.Helpers;
 using LostKit.Models;
 using Microsoft.Web.WebView2.WinForms;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Windows.Forms;
 
@@ -28,7 +29,7 @@ namespace LostKit
             RenderMarketPage();
             RenderMapPage();
             LoadNotes();
-
+            SkillLabel_MouseLeave(null, null);
             this.FormClosing += Application_FormClosing;
         }
 
@@ -133,6 +134,12 @@ namespace LostKit
                     //{
                     //    //MessageBox.Show($"{record.Type} - Level: {record.Level}, Value: {record.Value / 10}, Date: {record.Date}, Rank: {record.Rank}");
                     //}
+
+                    for (int i = 0; i < skillRecords.Count; i++)
+                    {
+                        var nextLvlXP = RunescapeCalculators.GetExperienceForLevel(skillRecords[i].Level + 1);
+                        skillRecords[i].NextLevelExp = nextLvlXP;
+                    }
 
                     return skillRecords;
                 }
@@ -481,9 +488,21 @@ namespace LostKit
         private void LoadHiscoreSkill(SkillRecord record, ref Label label)
         {
             label.Text = record.Level.ToString();
-            toolTip1.SetToolTip(label, $"Total exp: {NumberHelper.MakeBigNumberReadable(record.Value)}" +
-                $"\nRank: {NumberHelper.MakeBigNumberReadable(record.Rank)}");
-            //add next lv etc
+            //toolTip1.SetToolTip(label, $"Total exp: {NumberHelper.MakeBigNumberReadable(record.Value)}" +
+            //    $"\nRank: {NumberHelper.MakeBigNumberReadable(record.Rank)}");
+
+            label.MouseEnter += (sender, e) => SkillLabel_MouseEnter(sender, e, record);
+            label.MouseLeave += SkillLabel_MouseLeave;
+        }
+
+        private void SkillLabel_MouseLeave(object? sender, EventArgs e)
+        {
+            SkillExtraInfoBox.Text = "Skill:\n\nRank:\n\nExperience:\n\nXp To Next Lvl:\n\n";
+        }
+
+        private void SkillLabel_MouseEnter(object? sender, EventArgs e, SkillRecord record)
+        {
+            SkillExtraInfoBox.Text = $"Skill:\n{record.Type.ToString()}\nRank:\n{record.Rank}\nExperience:\n{NumberHelper.MakeBigNumberReadable(record.Value)}\nXp To Next Lvl:\n{NumberHelper.MakeBigNumberReadable(record.NextLevelExp - record.Value)}\n";
         }
 
         private void SetCombatLevelHiScore(double lvl)
