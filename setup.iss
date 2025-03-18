@@ -3,7 +3,7 @@ AppName=LostKit
 AppVersion=1.0
 DefaultDirName={pf}\LostKit
 DefaultGroupName=LostKit
-OutputDir=.
+OutputDir=output
 OutputBaseFilename=LostKitSetup
 
 [Files]
