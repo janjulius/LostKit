@@ -31,6 +31,14 @@ jobs:
           Get-ChildItem -Path "./publish" -Recurse -ErrorAction Stop | Format-Table FullName, Length -AutoSize
         shell: powershell
 
+      - name: Install Inno Setup
+        run: choco install innosetup -y
+        shell: powershell
+
+      - name: Build Installer with Inno Setup
+        run: iscc setup.iss
+        shell: powershell
+
       - name: Install WinRAR
         run: |
           choco install winrar -y
