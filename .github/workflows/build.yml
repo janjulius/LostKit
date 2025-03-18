@@ -3,11 +3,11 @@ name: Build and Release WinForms App
 on:
   push:
     tags:
-      - "v*.*.*"  # Runs only when a new version tag (e.g., v1.0.0) is pushed
+      - "v*.*.*"  # Trigger workflow when a new version tag is pushed (e.g., v1.0.0)
 
 jobs:
   build:
-    runs-on: windows-latest  # Use Windows for building WinForms apps
+    runs-on: windows-latest  # Use Windows runner for building Windows apps
 
     steps:
       - name: Checkout repository
@@ -26,8 +26,8 @@ jobs:
 
       - name: Verify Published Files
         run: |
-          echo "Listing files in the publish directory:"
-          dir ./publish
+          echo "Listing all files in the publish directory:"
+          dir ./publish /s
         shell: powershell
 
       - name: Install WinRAR
@@ -38,7 +38,13 @@ jobs:
       - name: Package Entire Publish Folder as RAR
         run: |
           mkdir output
-          & "C:\Program Files\WinRAR\WinRAR.exe" a -r output/WinFormsApp.rar ./publish\*
+          & "C:\Program Files\WinRAR\WinRAR.exe" a -r -ep1 output/WinFormsApp.rar ./publish\*
+          echo "Packaging completed successfully."
+        shell: powershell
+
+      - name: Verify RAR Contents
+        run: |
+          & "C:\Program Files\WinRAR\WinRAR.exe" l output/WinFormsApp.rar
         shell: powershell
 
       - name: Create GitHub Release
