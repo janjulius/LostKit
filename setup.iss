@@ -5,7 +5,6 @@ DefaultDirName={pf}\LostKit
 DefaultGroupName=LostKit
 OutputDir=.
 OutputBaseFilename=LostKitSetup
-SetupIconFile=publish\MyIcon.ico  
 
 [Files]
 Source: "publish\*"; DestDir: "{app}"; Flags: recursesubdirs
