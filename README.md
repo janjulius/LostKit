@@ -20,5 +20,5 @@ ___
     - Prefered detail setting
 
 ![alt text](image-1.png)
-![alt text](image-2.png)
+![alt text](blob:https://imgur.com/0a18e89f-a0b2-41f7-aa81-c680fa1efaa5)
 ![alt text](image-3.png)
