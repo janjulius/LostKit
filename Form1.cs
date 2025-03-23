@@ -4,6 +4,8 @@ using LostKit.Models;
 using Microsoft.Web.WebView2.WinForms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Svg;
+using System.Net;
 using System.Net.Http;
 using System.Windows.Forms;
 
@@ -25,10 +27,12 @@ namespace LostKit
             settings = Settings.Load();
             Directory.CreateDirectory(Path.GetDirectoryName(notesFilePath));
             InitializeComponent();
-            LoadWorldData();
+            //LoadWorldData();
+            LoadWorldData2();
 
             RenderWebPage();
             RenderMarketPage();
+            RenderDropTablesPage();
             RenderMapPage();
             LoadNotes();
             SkillLabel_MouseLeave(null, null);
@@ -36,6 +40,13 @@ namespace LostKit
 
             this.FormClosing += Application_FormClosing;
         }
+
+        private void RenderDropTablesPage()
+        {
+            DroptableWebview.Source = new Uri($"https://thesneilert.github.io/2004scape/");
+            DroptableWebview.EnsureCoreWebView2Async();
+        }
+
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Y <= 1)
@@ -252,9 +263,119 @@ namespace LostKit
             }
         }
 
+        public static Bitmap DownloadImage(string url)
+        {
+            using WebClient client = new WebClient();
+            byte[] imageData = client.DownloadData(url);
+
+            using var stream = new System.IO.MemoryStream(imageData);
+            return new Bitmap(stream);
+        }
+
+        private Bitmap DownloadAndConvertSvgToBitmap(string url)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    // Download SVG content as a string
+                    string svgContent = client.DownloadString(url);
+
+                    if (string.IsNullOrEmpty(svgContent))
+                        throw new Exception("SVG content is empty.");
+
+                    // Load the SVG content into an SvgDocument
+                    SvgDocument svgDocument = SvgDocument.FromSvg<SvgDocument>(svgContent);
+
+                    // Set up the size for the Bitmap (can be adjusted)
+                    int width = (int)svgDocument.Width;
+                    int height = (int)svgDocument.Height;
+
+                    // Create a Bitmap based on the SVG size
+                    Bitmap bitmap = new Bitmap(width, height);
+
+                    // Draw the SVG content to the Bitmap
+                    using (Graphics g = Graphics.FromImage(bitmap))
+                    {
+                        g.Clear(Color.Transparent);  // Optional: set background color to transparent
+                        svgDocument.Draw(g);  // Render SVG onto the Graphics object
+                    }
+
+                    return bitmap;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error downloading or rendering SVG from {url}: {ex.Message}");
+                return null;
+            }
+        }
+
+        private async void LoadWorldData2()
+        {
+            worldList.Clear();
+
+            string url = "https://2004.lostcity.rs/serverlist?hires.x=112&hires.y=16&method=0";
+            string htmlContent = await httpClient.GetStringAsync(url);
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(htmlContent);
+
+            var table = doc.DocumentNode.SelectSingleNode("//table"); // Select the table
+            var rows = table.SelectNodes(".//tr");
+
+            string currentRegion = "";
+            string currentFlag = "";
+            var worlds = new List<WorldData>();
+
+            foreach (var row in rows)
+            {
+                var cols = row.SelectNodes(".//td");
+                if (cols == null) continue;
+
+                if (cols.Count == 1)
+                {
+                    // Region Row (contains flag and region name)
+                    var imgNode = cols[0].SelectSingleNode(".//img");
+                    var text = cols[0].InnerText.Trim();
+
+                    if (imgNode != null && !string.IsNullOrEmpty(text))
+                    {
+                        currentFlag = imgNode.GetAttributeValue("src", "");  // Extract flag URL
+                        currentRegion = text; // Extract region name
+                    }
+                }
+                else if (cols.Count == 2)
+                {
+                    // World Row (contains world name and player count)
+                    var worldNode = cols[0].SelectSingleNode(".//a");
+                    string world = worldNode != null ? worldNode.InnerText.Trim() : cols[0].InnerText.Trim();
+                    string players = cols[1].InnerText.Trim();
+                    int.TryParse(players.Split(' ')[0], out int playerCountInt);
+                    int worldID = int.TryParse(System.Text.RegularExpressions.Regex.Match(world, @"\d+").Value, out int id) ? id : -1;
+
+                    var flagUrl = $"https://2004.lostcity.rs{currentFlag}";
+                    if (world.ToLower().Contains("world"))
+                    {
+                        worldList.Add(new WorldData
+                        {
+                            WorldName = world,
+                            PlayerCount = playerCountInt,
+                            Country = currentRegion.Replace("&nbsp;&nbsp; ", "").Trim(),
+                            FlagUrl = flagUrl,
+                            Offline = players == "OFFLINE",
+                            FlagImage = DownloadAndConvertSvgToBitmap(flagUrl)
+                        });
+                    }
+                }
+            }
+            PopulateWorldTabPage();
+
+        }
+
         private void PopulateWorldTabPage()
         {
             TabPage tabPage = new TabPage("Worlds");
+            tabPage.AutoScroll = true;
             int yOffset = 10; // Start at the top of the TabPage
             List<Label> worldLabels = new List<Label>();
 
@@ -293,7 +414,7 @@ namespace LostKit
                     }
                 }
 
-                LoadWorldData();
+                LoadWorldData2();
             };
             yOffset += 25;
             tabPage.Controls.Add(reloadButton);
@@ -301,45 +422,30 @@ namespace LostKit
 
             foreach (var world in worldList)
             {
-
+                PictureBox flagBox = new PictureBox
+                {
+                    Image = world.FlagImage,
+                    SizeMode = PictureBoxSizeMode.StretchImage,
+                    Size = new Size(32, 20), // Adjust size if needed
+                    Location = new Point(10, yOffset)
+                };
                 Label worldNameLabel = new Label
                 {
-                    Text = $"{world.WorldName} ({world.PlayerCount} players)",
-                    Location = new Point(10, yOffset),
+                    Text = world.Offline ? $"{world.WorldName} (OFFLINE)" : $"{world.WorldName} ({world.PlayerCount} players) ({world.Country})",
+                    Location = new Point(10 + flagBox.Width, yOffset),
                     AutoSize = true
                 };
                 yOffset += worldNameLabel.Height + 5;
 
                 worldLabels.Add(worldNameLabel);
-                //Label countryLabel = new Label
-                //{
-                //    Text = $"Country: {world.Country}",
-                //    Location = new Point(10, yOffset),
-                //    AutoSize = true
-                //};
-                //yOffset += countryLabel.Height + 5;
 
-                //Label playerCountLabel = new Label
-                //{
-                //    Text = $"Players: {world.PlayerCount}",
-                //    Location = new Point(10, yOffset),
-                //    AutoSize = true
-                //};
-                //yOffset += playerCountLabel.Height + 5;
-
-                //PictureBox flagPictureBox = new PictureBox
-                //{
-                //    Location = new Point(10, yOffset),
-                //    Size = new Size(50, 30),
-                //    SizeMode = PictureBoxSizeMode.StretchImage,
-                //    ImageLocation = "",
-                //};
-                //flagPictureBox.LoadAsync(world.FlagUrl);
-                //yOffset += flagPictureBox.Height + 10;
-
-                worldNameLabel.DoubleClick += (sender, e) => OnWorldDoubleClick(world); // Double-click handler for flag image
+                if (!world.Offline)
+                {
+                    worldNameLabel.DoubleClick += (sender, e) => OnWorldDoubleClick(world); // Double-click handler for flag image
+                }
 
                 tabPage.Controls.Add(worldNameLabel);
+                tabPage.Controls.Add(flagBox);
                 //tabPage.Controls.Add(countryLabel);
                 //tabPage.Controls.Add(playerCountLabel);
                 //tabPage.Controls.Add(flagPictureBox);

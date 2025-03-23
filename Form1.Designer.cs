@@ -86,6 +86,8 @@ namespace LostKit
             webView22 = new Microsoft.Web.WebView2.WinForms.WebView2();
             MapTab = new TabPage();
             webView23 = new Microsoft.Web.WebView2.WinForms.WebView2();
+            DropTableTab = new TabPage();
+            DroptableWebview = new Microsoft.Web.WebView2.WinForms.WebView2();
             toolTip1 = new ToolTip(components);
             menuStrip1 = new MenuStrip();
             lostKitToolStripMenuItem = new ToolStripMenuItem();
@@ -118,6 +120,8 @@ namespace LostKit
             ((System.ComponentModel.ISupportInitialize)webView22).BeginInit();
             MapTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)webView23).BeginInit();
+            DropTableTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DroptableWebview).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -127,6 +131,7 @@ namespace LostKit
             TabControl1.Controls.Add(tabPage2);
             TabControl1.Controls.Add(MarketTab);
             TabControl1.Controls.Add(MapTab);
+            TabControl1.Controls.Add(DropTableTab);
             TabControl1.Location = new Point(814, 12);
             TabControl1.Name = "TabControl1";
             TabControl1.SelectedIndex = 0;
@@ -753,6 +758,28 @@ namespace LostKit
             webView23.TabIndex = 0;
             webView23.ZoomFactor = 1D;
             // 
+            // DropTableTab
+            // 
+            DropTableTab.Controls.Add(DroptableWebview);
+            DropTableTab.Location = new Point(4, 24);
+            DropTableTab.Name = "DropTableTab";
+            DropTableTab.Padding = new Padding(3);
+            DropTableTab.Size = new Size(336, 549);
+            DropTableTab.TabIndex = 4;
+            DropTableTab.Text = "Drops";
+            DropTableTab.UseVisualStyleBackColor = true;
+            // 
+            // DroptableWebview
+            // 
+            DroptableWebview.AllowExternalDrop = true;
+            DroptableWebview.CreationProperties = null;
+            DroptableWebview.DefaultBackgroundColor = Color.White;
+            DroptableWebview.Location = new Point(0, 0);
+            DroptableWebview.Name = "DroptableWebview";
+            DroptableWebview.Size = new Size(336, 546);
+            DroptableWebview.TabIndex = 0;
+            DroptableWebview.ZoomFactor = 1D;
+            // 
             // menuStrip1
             // 
             menuStrip1.Items.AddRange(new ToolStripItem[] { lostKitToolStripMenuItem });
@@ -772,7 +799,7 @@ namespace LostKit
             // preferencesToolStripMenuItem
             // 
             preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            preferencesToolStripMenuItem.Size = new Size(180, 22);
+            preferencesToolStripMenuItem.Size = new Size(135, 22);
             preferencesToolStripMenuItem.Text = "Preferences";
             preferencesToolStripMenuItem.MouseDown += preferencesToolStripMenuItem_MouseDown;
             // 
@@ -819,6 +846,8 @@ namespace LostKit
             ((System.ComponentModel.ISupportInitialize)webView22).EndInit();
             MapTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)webView23).EndInit();
+            DropTableTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)DroptableWebview).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -884,5 +913,7 @@ namespace LostKit
         private MenuStrip menuStrip1;
         private ToolStripMenuItem lostKitToolStripMenuItem;
         private ToolStripMenuItem preferencesToolStripMenuItem;
+        private TabPage DropTableTab;
+        private Microsoft.Web.WebView2.WinForms.WebView2 DroptableWebview;
     }
 }
