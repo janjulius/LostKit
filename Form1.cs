@@ -35,11 +35,35 @@ namespace LostKit
             RenderDropTablesPage();
             RenderMapPage();
             Render2004Chat();
+            RenderCalculators();
             LoadNotes();
             SkillLabel_MouseLeave(null, null);
             menuStrip1.Visible = false;
 
+            //SetMenuIcons();
+
             this.FormClosing += Application_FormClosing;
+        }
+
+
+        private const int HISCORE_ICON = 0;
+        private void SetMenuIcons()
+        {
+            TabControl1.Multiline = true;
+            imageList1.ImageSize = new Size(32, 32);
+            TabControl1.ImageList = imageList1;
+
+            TabControl1.ItemSize = new Size(32, 32);
+            TabControl1.SizeMode = TabSizeMode.Fixed;
+
+            TabControl1.TabPages[0].ImageIndex = HISCORE_ICON;
+            TabControl1.TabPages[0].Text = "";
+        }
+
+        private void RenderCalculators()
+        {
+            calculatorsWebView.Source = new Uri($"https://halogod35.github.io/2004scape-calculators/");
+            calculatorsWebView.EnsureCoreWebView2Async();
         }
 
         private void RenderDropTablesPage()

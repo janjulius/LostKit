@@ -88,11 +88,14 @@ namespace LostKit
             webView23 = new Microsoft.Web.WebView2.WinForms.WebView2();
             DropTableTab = new TabPage();
             DroptableWebview = new Microsoft.Web.WebView2.WinForms.WebView2();
+            tabPage3 = new TabPage();
+            calculatorsWebView = new Microsoft.Web.WebView2.WinForms.WebView2();
             toolTip1 = new ToolTip(components);
             menuStrip1 = new MenuStrip();
             lostKitToolStripMenuItem = new ToolStripMenuItem();
             preferencesToolStripMenuItem = new ToolStripMenuItem();
             chatView = new Microsoft.Web.WebView2.WinForms.WebView2();
+            imageList1 = new ImageList(components);
             TabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox21).BeginInit();
@@ -123,6 +126,8 @@ namespace LostKit
             ((System.ComponentModel.ISupportInitialize)webView23).BeginInit();
             DropTableTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DroptableWebview).BeginInit();
+            tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)calculatorsWebView).BeginInit();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chatView).BeginInit();
             SuspendLayout();
@@ -134,6 +139,7 @@ namespace LostKit
             TabControl1.Controls.Add(MarketTab);
             TabControl1.Controls.Add(MapTab);
             TabControl1.Controls.Add(DropTableTab);
+            TabControl1.Controls.Add(tabPage3);
             TabControl1.Location = new Point(814, 12);
             TabControl1.Name = "TabControl1";
             TabControl1.SelectedIndex = 0;
@@ -782,6 +788,28 @@ namespace LostKit
             DroptableWebview.TabIndex = 0;
             DroptableWebview.ZoomFactor = 1D;
             // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(calculatorsWebView);
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(336, 549);
+            tabPage3.TabIndex = 5;
+            tabPage3.Text = "Calcs";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // calculatorsWebView
+            // 
+            calculatorsWebView.AllowExternalDrop = true;
+            calculatorsWebView.CreationProperties = null;
+            calculatorsWebView.DefaultBackgroundColor = Color.White;
+            calculatorsWebView.Location = new Point(6, 6);
+            calculatorsWebView.Name = "calculatorsWebView";
+            calculatorsWebView.Size = new Size(324, 537);
+            calculatorsWebView.TabIndex = 0;
+            calculatorsWebView.ZoomFactor = 1D;
+            // 
             // menuStrip1
             // 
             menuStrip1.Items.AddRange(new ToolStripItem[] { lostKitToolStripMenuItem });
@@ -815,6 +843,13 @@ namespace LostKit
             chatView.Size = new Size(794, 244);
             chatView.TabIndex = 3;
             chatView.ZoomFactor = 1D;
+            // 
+            // imageList1
+            // 
+            imageList1.ColorDepth = ColorDepth.Depth32Bit;
+            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
+            imageList1.TransparentColor = Color.Transparent;
+            imageList1.Images.SetKeyName(0, "0.ico");
             // 
             // Form1
             // 
@@ -862,6 +897,8 @@ namespace LostKit
             ((System.ComponentModel.ISupportInitialize)webView23).EndInit();
             DropTableTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DroptableWebview).EndInit();
+            tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)calculatorsWebView).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)chatView).EndInit();
@@ -931,5 +968,8 @@ namespace LostKit
         private TabPage DropTableTab;
         private Microsoft.Web.WebView2.WinForms.WebView2 DroptableWebview;
         private Microsoft.Web.WebView2.WinForms.WebView2 chatView;
+        private TabPage tabPage3;
+        private Microsoft.Web.WebView2.WinForms.WebView2 calculatorsWebView;
+        private ImageList imageList1;
     }
 }
