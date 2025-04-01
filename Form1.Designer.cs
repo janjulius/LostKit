@@ -92,6 +92,7 @@ namespace LostKit
             menuStrip1 = new MenuStrip();
             lostKitToolStripMenuItem = new ToolStripMenuItem();
             preferencesToolStripMenuItem = new ToolStripMenuItem();
+            chatView = new Microsoft.Web.WebView2.WinForms.WebView2();
             TabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox21).BeginInit();
@@ -123,6 +124,7 @@ namespace LostKit
             DropTableTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DroptableWebview).BeginInit();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chatView).BeginInit();
             SuspendLayout();
             // 
             // TabControl1
@@ -803,13 +805,25 @@ namespace LostKit
             preferencesToolStripMenuItem.Text = "Preferences";
             preferencesToolStripMenuItem.MouseDown += preferencesToolStripMenuItem_MouseDown;
             // 
+            // chatView
+            // 
+            chatView.AllowExternalDrop = true;
+            chatView.CreationProperties = null;
+            chatView.DefaultBackgroundColor = Color.White;
+            chatView.Location = new Point(12, 606);
+            chatView.Name = "chatView";
+            chatView.Size = new Size(794, 244);
+            chatView.TabIndex = 3;
+            chatView.ZoomFactor = 1D;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.Disable;
             BackColor = SystemColors.ActiveCaptionText;
-            ClientSize = new Size(1170, 602);
+            ClientSize = new Size(1170, 855);
+            Controls.Add(chatView);
             Controls.Add(TabControl1);
             Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -850,6 +864,7 @@ namespace LostKit
             ((System.ComponentModel.ISupportInitialize)DroptableWebview).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)chatView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -915,5 +930,6 @@ namespace LostKit
         private ToolStripMenuItem preferencesToolStripMenuItem;
         private TabPage DropTableTab;
         private Microsoft.Web.WebView2.WinForms.WebView2 DroptableWebview;
+        private Microsoft.Web.WebView2.WinForms.WebView2 chatView;
     }
 }

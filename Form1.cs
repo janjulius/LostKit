@@ -34,6 +34,7 @@ namespace LostKit
             RenderMarketPage();
             RenderDropTablesPage();
             RenderMapPage();
+            Render2004Chat();
             LoadNotes();
             SkillLabel_MouseLeave(null, null);
             menuStrip1.Visible = false;
@@ -45,6 +46,28 @@ namespace LostKit
         {
             DroptableWebview.Source = new Uri($"https://thesneilert.github.io/2004scape/");
             DroptableWebview.EnsureCoreWebView2Async();
+        }
+
+        public void Render2004Chat()
+        {
+            if (settings.ShowChat)
+            {
+                chatView.Visible = true;
+                chatView.Source = new Uri("https://app.2004.chat/");
+                chatView.EnsureCoreWebView2Async();
+                this.Size = new Size(this.Width, 894);
+
+            }
+            else
+            {
+                if (this.WindowState == FormWindowState.Normal)
+                {
+                    //639
+                    //894
+                    chatView.Visible = false;
+                    this.Size = new Size(this.Width, 639);
+                }
+            }
         }
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
@@ -663,8 +686,13 @@ namespace LostKit
 
         private void preferencesToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
         {
-            PreferencesForm pForm = new PreferencesForm();
+            PreferencesForm pForm = new PreferencesForm(this);
             pForm.ShowDialog();
+        }
+
+        public void ReloadSettings()
+        {
+            settings = Settings.Load();
         }
     }
 }
