@@ -410,7 +410,8 @@ namespace LostKit
                             Country = currentRegion.Replace("&nbsp;&nbsp; ", "").Trim(),
                             FlagUrl = flagUrl,
                             Offline = players == "OFFLINE",
-                            FlagImage = DownloadAndConvertSvgToBitmap(flagUrl)
+                            FlagImage = DownloadAndConvertSvgToBitmap(flagUrl),
+                            WorldId = worldID
                         });
                     }
                 }
