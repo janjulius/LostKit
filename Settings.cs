@@ -12,6 +12,8 @@ namespace LostKit
         public int FavWorld { get; set; } = 1;
         public DetailSetting FavDetailSettings { get; set; } = DetailSetting.HIGH;
 
+        public bool ShowChat = true;
+
         private static readonly string settingsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "data", "settings.json");
 
         public static Settings Load()

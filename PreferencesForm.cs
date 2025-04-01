@@ -16,8 +16,9 @@ namespace LostKit
         private readonly string settingsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "data", "settings.json");
         private Settings settings;
 
+        Form1 form1;
 
-        public PreferencesForm()
+        public PreferencesForm(Form1 form1)
         {
             settings = Settings.Load();
             InitializeComponent();
@@ -25,6 +26,8 @@ namespace LostKit
             FavWorldTextBox.Text = settings.FavWorld.ToString();
             comboBox1.DataSource = Enum.GetValues(typeof(DetailSetting));
             comboBox1.SelectedIndex = (int)settings.FavDetailSettings;
+            showChatCheckBox.Checked = settings.ShowChat;
+            this.form1 = form1;
         }
 
         private void SaveButton_MouseDown(object sender, MouseEventArgs e)
@@ -38,10 +41,19 @@ namespace LostKit
                 MessageBox.Show($"The input value of the world needs to be an integer\n{er.Message}");
             }
             settings.FavDetailSettings = (DetailSetting)comboBox1.SelectedValue;
+            settings.ShowChat = showChatCheckBox.Checked;
 
             settings.Save();
 
+            ApplyRealtimeSettings();
+
             this.Close();
+        }
+
+        private void ApplyRealtimeSettings()
+        {
+            form1.ReloadSettings();
+            form1.Render2004Chat();
         }
 
         private void SaveSettings()

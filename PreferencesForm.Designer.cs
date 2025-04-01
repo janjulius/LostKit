@@ -33,6 +33,8 @@
             WorldLabel = new Label();
             FavWorldTextBox = new TextBox();
             SaveButton = new Button();
+            label1 = new Label();
+            showChatCheckBox = new CheckBox();
             SuspendLayout();
             // 
             // DetailModeLabel
@@ -84,12 +86,36 @@
             SaveButton.UseVisualStyleBackColor = true;
             SaveButton.MouseDown += SaveButton_MouseDown;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = SystemColors.ActiveCaptionText;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label1.ForeColor = SystemColors.AppWorkspace;
+            label1.Location = new Point(12, 61);
+            label1.Name = "label1";
+            label1.Size = new Size(65, 15);
+            label1.TabIndex = 5;
+            label1.Text = "Show chat";
+            // 
+            // showChatCheckBox
+            // 
+            showChatCheckBox.AutoSize = true;
+            showChatCheckBox.Location = new Point(83, 61);
+            showChatCheckBox.Name = "showChatCheckBox";
+            showChatCheckBox.Size = new Size(82, 19);
+            showChatCheckBox.TabIndex = 6;
+            showChatCheckBox.Text = "checkBox1";
+            showChatCheckBox.UseVisualStyleBackColor = true;
+            // 
             // PreferencesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(800, 450);
+            Controls.Add(showChatCheckBox);
+            Controls.Add(label1);
             Controls.Add(SaveButton);
             Controls.Add(FavWorldTextBox);
             Controls.Add(WorldLabel);
@@ -108,5 +134,7 @@
         private Label WorldLabel;
         private TextBox FavWorldTextBox;
         private Button SaveButton;
+        private Label label1;
+        private CheckBox showChatCheckBox;
     }
 }
